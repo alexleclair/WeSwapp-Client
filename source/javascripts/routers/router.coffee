@@ -31,6 +31,10 @@ class App.Routers.Router extends Backbone.Router
 
 
 	items: (id)->
+		if id == 'new'
+			@current_view = new App.Views.ItemNew();
+			@current_view.render();
+			return;
 		item = App.items.get(id)
 
 
