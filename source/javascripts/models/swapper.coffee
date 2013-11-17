@@ -15,7 +15,15 @@ class App.Models.Swapper extends Backbone.Model
 
 
 	set_facebook_information: (info)->
-		this.set {auth_info: info.authResponse}
+		_this = this
+
+		_this.set {auth_info: info.authResponse}
+
+		if info.authResponse?
+			$.get @urlRoot+"?authToken="+info.authResponse.accessToken, (response)->
+				info = response.response
+
+				_this.set {info}
 
 
 

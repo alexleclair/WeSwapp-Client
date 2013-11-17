@@ -19,6 +19,12 @@ class App.Routers.Router extends Backbone.Router
 	
 	
 		
+
+	load_current_view: ->
+		App.menu_view.hide_menu()
+		@current_view.render()
+
+
 	
 	home: ->
 		@current_view = new App.Views.ItemIndex
@@ -26,7 +32,7 @@ class App.Routers.Router extends Backbone.Router
 		
 		
 		App.items.fetch()
-		@current_view.render()
+		this.load_current_view()
 
 
 
@@ -38,7 +44,7 @@ class App.Routers.Router extends Backbone.Router
 			@current_view = new App.Views.Item
 				model: App.items.get id
 
-			@current_view.render()
+			this.load_current_view()
 
 		else
 			item = new App.Models.Item {id: id}
@@ -49,7 +55,7 @@ class App.Routers.Router extends Backbone.Router
 			@current_view = new App.Views.Item
 				model: item
 
-			@current_view.render()
+			this.load_current_view()
 
 	users: (id)->
 		user = App.users.get(id)
@@ -59,7 +65,7 @@ class App.Routers.Router extends Backbone.Router
 			@current_view = new App.Views.User
 				model: App.users.get id
 
-			@current_view.render()
+			this.load_current_view()
 
 		else
 			user = new App.Models.User {id: id}
@@ -70,7 +76,7 @@ class App.Routers.Router extends Backbone.Router
 			@current_view = new App.Views.User
 				model: user
 
-			@current_view.render()
+			this.load_current_view()
 
 
 

@@ -23,13 +23,16 @@ class App.Views.ItemIndex extends Backbone.View
 	render: ->
 		this.$el.html @template
 
-		this.render_items()
+		@collection.fetch()
 		
 		this
 		
 		
 	render_items: ->
 		_this = this
+
+
+		this.$el.find("#items").html ""
 
 		@collection.each (item)->
 			item.set {image: item.get("medias")[0]}

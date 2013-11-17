@@ -1,15 +1,17 @@
 
 
 {{^auth_info}}
-<a href="#" class="app__nav__link" id="app__nav__link--facebook">Sign In with Facebook</a>
+<a href="#" class="app__nav__link swapp-right" id="app__nav__link--facebook"><i class="swapp-facebook"></i> Sign In with Facebook</a>
 {{/auth_info}}
 
 {{#auth_info}}
-<a href="#" class="app__nav__link">
-	<img src="" class="app__nav__image">
-	Edouard Trong
+{{#info}}
+<a href="users/{{id}}" class="app__nav__link swapp-right">
+	<img src="https://graph.facebook.com/{{fb_uid}}/picture" class="app__nav__image">
+	{{firstname}} {{lastname}}
 </a>
-<a href="#" class="app__nav__link swapp-star">Favorites</a>
-<a href="#" class="app__nav__link swapp-tool">Settings</a>
-<a href="#" class="app__nav__link swapp-unlock">Log out</a>
+{{/info}}
+<a href="#" class="app__nav__link swapp-right"><i class="swapp-star"></i> Favorites</a>
+<a href="#" class="app__nav__link swapp-right"><i class="swapp-wrench"></i> Settings</a>
+<a href="#" class="app__nav__link swapp-right" id="app__nav__link--logout"><i class="swapp-unlock"></i> Log out</a>
 {{/auth_info}}
