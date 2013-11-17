@@ -84,8 +84,30 @@ img {
 }
 
 
+.proposals {
+	position: absolute;
+	top: 0;
+	right: 0;
 
+	list-style: none;
 
+	width: 40%;
+	height: 100%;
+
+	overflow-y: auto;
+
+	padding: 4.5em 0 0;
+}
+
+	.proposals__button {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+
+		width: 40%;
+
+		padding: 4.5em 0 0;
+	}
 
 
 

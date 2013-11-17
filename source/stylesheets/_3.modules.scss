@@ -157,8 +157,6 @@
 
 
 				&:after {
-					content: "+";
-
 					display: block;
 					@include transform(rotate(45deg) translate(-36%, -19%));
 				}
@@ -203,6 +201,176 @@
 	}
 
 
+.header__bar {
+	position: absolute;
+	top: 4em;
+	left: 0;
+
+	z-index: -1;
+
+	height: 10em;
+	width: 100%;
+
+	opacity: 0.8;
+
+
+	@include gradient;
+}
+
+	.header__bar--item {
+		-webkit-filter: hue-rotate(240deg);
+	}
+
+
+	.header__image {
+		display: block;
+		position: relative;
+
+		background-color: white;
+		background-size: cover;
+
+
+		border: 0.5em solid white;
+		border-radius: 50%;			
+
+		width: 10em;
+		margin: 0 auto 1em;
+
+
+		&:after {
+			content: "";
+			display: block;
+		    padding-top: 100%;
+		}
+
+		&.header__image--profile {
+			
+		}
+
+		&.header__image--item {
+			width: 18em;
+
+			margin: 0 auto 2em;
+		}
+
+		.item__owner_link {
+			width: 35%;
+		}
+	}
+
+
+.item__header {
+	text-align: center;
+	// vertical-align: middle;
+
+	margin-top: 2em;
+}
+
+	.item__header__h1,
+	.item__header__h2,
+	.item__bar__h1 {
+		color: $darkgray--dark;
+		text-transform: uppercase;
+		line-height: 1.1em;
+	}
+
+	.item__header__h1 {
+		font-size: 2.5em;
+
+		margin-bottom: 0.3em;
+	}
+
+	.item__header__h2 {
+		font-size: 1.2em;
+
+		margin-bottom: 2em;
+	}
+
+	.item__meta {
+		vertical-align: bottom;
+
+		margin-bottom: 2.5em;
+
+		.button {
+
+
+			&:first-of-type {
+				border-bottom-left-radius: 0; 
+				border-bottom-right-radius: 0; 
+			}
+			
+			&:last-child {
+				border-top-left-radius: 0; 
+				border-top-right-radius: 0; 
+			}
+		}
+	}
+
+		.item__description {
+			margin-bottom: 3em;
+		}
+
+
+.item__bar {
+
+}
+
+	.item__bar__h2 {
+		text-align: center;
+	}
+
+
+.proposals {
+	background: $lightgray;
+}
+
+	.proposals__button {
+		font-size: 1.4em;
+
+		border-radius: 0;
+	}
+
+
+	.proposal {
+		cursor: pointer;
+		padding: 1em;
+
+
+		&:hover {
+			background: $lightgray--dark;
+		}
+
+		&.proposal--selected {
+			background: $mint;
+		}
+
+		&.proposal--new {
+			color: $aqua;
+			text-align: center;
+		}
+	}
+
+		.proposal__image {
+			display: inline-block;
+			width: 30%;
+			vertical-align: middle;
+
+			margin-right: 1.5em;
+		}
+
+
+		.proposal__title {
+			display: inline-block;
+			vertical-align: middle;
+
+			font-size: 1.2em;
+			font-weight: 300;
+			text-transform: uppercase;
+
+			.proposal--selected & {
+				color: white;
+			}
+		}
 
 
 

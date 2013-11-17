@@ -10,6 +10,7 @@ class App.Routers.Router extends Backbone.Router
 	routes: {
 		'':'home'
 		'items/:id':'items'
+		'items/:id/swap':'item_swap'
 		'users/:id':'users'
 	}
 			
@@ -56,6 +57,35 @@ class App.Routers.Router extends Backbone.Router
 				model: item
 
 			this.load_current_view()
+
+
+	item_swap: (id)->
+		item = App.items.get(id)
+
+
+		if item?
+			@current_view = new App.Views.ItemSwap
+				item: App.items.get id
+				swapper: App.swapper
+
+
+		else
+			item = new App.Models.Item {id: id}
+			item.fetch()
+
+			App.items.add item
+
+			@current_view = new App.Views.ItemSwap
+				item: item
+				swapper: App.swapper
+
+
+		App.swapper.get_items()
+
+		this.load_current_view()
+
+
+
 
 	users: (id)->
 		user = App.users.get(id)

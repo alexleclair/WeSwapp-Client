@@ -7,44 +7,6 @@
 		text-align: center;
 	}
 
-		.profile__header__bar {
-			position: absolute;
-			top: 4em;
-			left: 0;
-
-			z-index: -1;
-
-			height: 10em;
-			width: 100%;
-
-			opacity: 0.8;
-
-
-			@include gradient;
-			
-		}
-
-
-		.profile__header__image {
-			display: block;
-			background-color: white;
-			background-size: cover;
-
-			overflow: hidden;
-
-			border: 0.5em solid white;
-			border-radius: 50%;			
-
-			width: 10em;
-			margin: 0 auto 1em;
-
-
-			&:after {
-				content: "";
-				display: block;
-			    padding-top: 100%;
-			}
-		}
 
 		.profile__header__h1,
 		.profile__header__h2 {

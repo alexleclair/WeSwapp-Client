@@ -26,7 +26,8 @@
 	border-radius: 1em;
 	
 	
-	&:active {
+	&:active,
+	&:hover {
 		background: $sunflower--dark;
 	}
 }
@@ -35,11 +36,39 @@
 		width: 100%;
 	}
 
+	.button--icon {
+		padding: 1em;
+
+		color: white;
+		font-weight: 300;
+		text-transform: uppercase;
+		
+
+		i {
+			font-size: 1.5em;
+			line-height: 1em;
+			vertical-align: middle;
+
+			margin-right: 0.5em;
+		}
+	}
+
 	.button--just_one {
 		width: 30%;
 
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
+	}
+
+
+	.button--swapp {
+		background: $grass;
+
+
+		&:hover {
+			@include gradient;	
+			-webkit-animation: hue 5s infinite;
+		}
 	}
 
 
