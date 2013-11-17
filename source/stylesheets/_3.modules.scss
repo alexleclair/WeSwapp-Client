@@ -336,6 +336,8 @@
 		padding: 1em;
 
 
+		@include transition(background 0.3s);
+
 		&:hover {
 			background: $lightgray--dark;
 		}
@@ -366,6 +368,9 @@
 			font-size: 1.2em;
 			font-weight: 300;
 			text-transform: uppercase;
+
+
+			@include transition(color 0.3s);
 
 			.proposal--selected & {
 				color: white;
