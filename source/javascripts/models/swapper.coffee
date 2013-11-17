@@ -9,6 +9,9 @@ class App.Models.Swapper extends Backbone.Model
 	facebook_login: ->
 		FB.login()
 
+	facebook_logout: ->
+		FB.logout()
+
 
 
 	set_facebook_information: (info)->

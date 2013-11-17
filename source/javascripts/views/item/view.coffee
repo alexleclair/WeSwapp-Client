@@ -2,7 +2,7 @@ class App.Views.Item extends Backbone.View
 
 	el: $("#app")
 	
-	template: Mustache.compile $("#source_templates_item_view").html()
+	template: Mustache.compile $("#source_templates_items_view").html()
 	
 	
 	initialize: ->
@@ -11,7 +11,6 @@ class App.Views.Item extends Backbone.View
 	
 	render: ->
 		console.log @model
-		this.$el.html @template
-			model: @model.toJSON()
+		this.$el.html @template(@model.attributes)
 		
 		this

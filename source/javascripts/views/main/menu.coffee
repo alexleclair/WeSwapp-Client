@@ -23,7 +23,7 @@ class App.Views.Menu extends Backbone.View
 	
 	
 	render: ->
-		this.$el.html @template
+		this.$el.html @template(@model.attributes)
 		
 		this
 
@@ -37,8 +37,6 @@ class App.Views.Menu extends Backbone.View
 
 	facebook_login: (e)->
 		e.preventDefault()
-
-		console.log "clicked"
 
 		App.swapper.facebook_login()
 
