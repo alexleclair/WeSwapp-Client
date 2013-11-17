@@ -12,7 +12,7 @@ window.App =
 	Collections: {}
 	Views: {}
 	Routers: {}
-	APIRoot: 'https://5c4ae6ba.ngrok.com'
+	APIRoot: 'https://www.weswapp.com/api'
 	
 	
 	

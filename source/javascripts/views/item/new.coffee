@@ -1,5 +1,5 @@
 class App.Views.ItemNew extends Backbone.View
-	url: "https://5c4ae6ba.ngrok.com/items?authToken=AUTH_ICI"
+	url: App.APIRoot + "/items"
 	el: $("#app")
 	imageData:null
 
@@ -72,7 +72,7 @@ class App.Views.ItemNew extends Backbone.View
 			title:$form.find('[name="title"]').val()
 			description:$form.find('[name="description"]').val()
 			media:@imageData;
-		$.post @url, jsonBody, (data)->
+		$.post @url+'?authToken='+App.swapper.attributes.auth_info.accessToken, jsonBody, (data)->
 			if data.code != 200
 				alert data.error
 			else
