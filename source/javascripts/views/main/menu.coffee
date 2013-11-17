@@ -9,6 +9,7 @@ class App.Views.Menu extends Backbone.View
 	
 	events: {
 		"click #app__nav__link--facebook": "facebook_login"
+		"click #app__nav__link--logout": "facebook_logout"
 	}
 	
 	
@@ -45,6 +46,11 @@ class App.Views.Menu extends Backbone.View
 		e.preventDefault()
 
 		App.swapper.facebook_login()
+
+	facebook_logout: (e)->
+		e.preventDefault()
+
+		App.swapper.facebook_logout()
 
 
 	

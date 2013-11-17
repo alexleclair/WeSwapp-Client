@@ -47,6 +47,9 @@
 		color: $lightgray--dark;
 		font-size: 1.5em;
 
+
+		@include transition(color 0.3s);
+
 		&:hover {
 			color: $sunflower;
 		}

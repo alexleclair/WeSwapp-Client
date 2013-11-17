@@ -32,6 +32,10 @@
 		}
 
 
+		&:first-child {
+			padding-top: 0.5em;
+		}
+
 		&:last-child {
 			border-bottom: 0.4em solid $mint--darker;
 		}
