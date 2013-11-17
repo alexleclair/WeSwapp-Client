@@ -28,6 +28,7 @@ class App.Views.Notifications extends Backbone.View
 		$count = $bell.find('.count');
 
 		items = @model.attributes.notifications;
+		console.log 'Model', @model.attributes
 		if items?
 			this.$el.html @template(items)
 			this.render_notifications()
@@ -56,16 +57,29 @@ class App.Views.Notifications extends Backbone.View
 				classes.push('seen');
 			if item.isReceived
 				classes.push('received');
-				user = item.user;
-				item.image = 'https://graph.facebook.com/' + user.fb_uid + '/picture';
 			if item.isSent
 				classes.push('sent');
-				user = item.item.user;
-				item.image = item.item.medias[0]
 
 			item.classes = classes.join(' ');
 			item.user = user;
+			if item.item_initiator.user_id == App.swapper.attributes.info.id
+				item.is_initiator = true;
+				item.you = item.user_initiator;
+				item.them = item.item_requested.user;
+				item.their_item = item.item_requested;
+				item.your_item = item.item_initiator;
+			else
+				item.is_initiator = false;
+				item.them = item.user_initiator;
+				item.you = item.item_requested.user;
+				item.your_item = item.item_requested;
+				item.their_item = item.item_initiator;
 
+			item.gender_word = 'their';
+			if item.them.gender == 'male'
+				item.gender_word = 'his'
+			if item.them.gender == 'female'
+				item.gender_word = 'her'
 
 			_this.add_notification item
 
