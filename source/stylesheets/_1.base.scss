@@ -1,0 +1,112 @@
+
+@import "_1.base.fonts";
+
+
+
+/* Colors */
+$lightgray: #f5f7fa;
+$lightgray--dark: #e6e9ed;
+
+$mediumgray: #ccd1d9;
+$mediumgray--dark: #aab2bd;
+
+$darkgray: #656d78;
+$darkgray--dark: #434a54;
+
+$bittersweet: #fc6e51;
+$bittersweet--dark: #e9573f;
+$bittersweet--darker: darken(#e9573f, 20%);
+
+$aqua: #4fc1e9;
+$aqua--dark: #3bafda;
+
+$grass: #a0d468;
+$grass--dark: #8cc152;
+
+$mint: #48cfad;
+$mint--dark: #37bc9b;
+$mint--darker: darken(#37bc9b, 5%);
+
+$sunflower: #ffce54;
+$sunflower--dark: #f6bb42;
+
+
+/* Fonts */
+$header_font: "Raleway", sans-serif;
+$body_font: sans-serif;
+
+
+
+
+
+
+
+
+/* Base */
+
+html {
+	font: 1em/1.6 $header_font;
+	color: $darkgray;
+}
+
+
+h1, h2, h3, h4, h5, h6, input {
+	font-family: $header_font;
+	color: $grass--dark;
+}
+	
+	.thin {
+		font-weight: 300;
+	}
+
+
+a {
+	color: $aqua;
+	text-decoration: none;
+}
+
+
+
+
+
+/* Mixins */
+
+@mixin absolute_center {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	margin: auto;
+}
+
+
+@mixin transformer($time) {
+	transition: transform $time;
+	-webkit-transition: -webkit-transform $time;
+	
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+@mixin translate($x, $y) {
+	transform: translate3d($x, $y, 0);
+	-ms-transform: translate3d($x, $y, 0);
+	-webkit-transform: translate3d($x, $y, 0);
+}
+
+@mixin scale($i) {
+	transform: scale($i, $i);
+	-ms-transform: scale($i, $i);
+	-webkit-transform: scale($i, $i);
+}
+
+@mixin transition($transition...) {
+	transition: $transition;
+	-webkit-transition: $transition;
+}
+
+

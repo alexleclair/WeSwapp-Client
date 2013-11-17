@@ -1,0 +1,64 @@
+
+
+
+@mixin normalize_btn {
+	border: none !important;
+	outline: none !important;
+}
+
+
+
+
+.button {	
+	@include normalize_btn;
+
+	display: inline-block;
+	
+	color: $darkgray--dark;
+	font-size: 0.8em;
+	font-family: $header_font;
+	text-decoration: none;
+	text-align: center;
+	
+	padding: 1.5em;
+	background: $sunflower;
+	
+	border-radius: 1em;
+	
+	
+	&:active {
+		background: $sunflower--dark;
+	}
+}
+
+	.button--full {
+		width: 100%;
+	}
+
+	.button--just_one {
+		width: 30%;
+
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+
+
+
+
+.app__header__btn {
+	@include normalize_btn;
+
+	padding: 0.6em 0.8em 0.5em;
+
+	background: none;
+}
+
+	.app__header__btn--active {
+		color: white !important;
+
+		background: $mint;
+	}
+
+
+
+

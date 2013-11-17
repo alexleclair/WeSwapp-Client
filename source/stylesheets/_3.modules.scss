@@ -1,0 +1,103 @@
+
+@import "_3.modules.buttons";
+@import "_3.modules.form";
+@import "_3.modules.landing";
+@import "_3.modules.menu";
+
+
+
+
+
+.app__header {
+	text-align: center;
+
+	background: $bittersweet;
+}
+
+	.app__header__logo {
+		@include absolute_center;
+		top: -1em;
+
+		color: white;
+		font-size: 7em;
+
+		height: 0;
+		line-height: 0;
+	}
+
+	.app__header__btn {
+		font-size: 2em;
+		color: $bittersweet--darker;
+	}
+
+
+
+.item {
+	margin-bottom: 1.5em;
+}
+
+	.item__images {
+		position: relative;
+
+		margin-bottom: 2em;
+	}
+		
+		.item__image__link {
+			display: block;
+			width: 100%;
+		}
+
+
+		.item__image {
+			display: block;
+			background-size: cover;
+
+			overflow: hidden;
+			border-radius: 50%;			
+
+
+			@include transformer(0.3s);
+
+			&:hover {
+				@include scale(1.05);
+			}
+
+			&:after {
+				content: "";
+				display: block;
+			    padding-top: 100%;
+			}
+		}
+
+
+		.item__owner_link {
+			position: absolute;
+			bottom: -1em;
+			right: -1em;
+
+			width: 40%;
+		}
+
+		.item__owner_image {
+			border: 0.5em solid white;
+			border-radius: 50%;
+
+
+			@include transition(border-color 0.3s);
+
+			&:hover {
+				border-color: $aqua;
+			}
+		}
+
+	.item__title {
+		text-align: center;
+
+
+		@include transition(color 0.3s);
+
+		.item:hover & {
+			color: $aqua--dark;
+		}
+	}
+

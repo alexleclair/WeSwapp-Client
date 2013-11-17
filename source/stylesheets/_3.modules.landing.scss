@@ -1,0 +1,74 @@
+
+
+.landing {
+	text-align: center;
+
+	h1, h2, h3, h4, h5, h6, input {
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+	}
+}
+
+	.landing__box {
+		@include absolute_center;
+
+		z-index: 200;
+
+		min-width: 24em;
+		width: 48%;
+		height: 70%;
+	}
+
+	.landing__h1 {
+		font-size: 16em;
+		letter-spacing: 0;
+
+		color: white;
+		text-align: center;
+
+		line-height: 0;
+
+		margin: -3rem 0;
+	}
+
+	.landing__h2,
+	.landing__h3 {
+		font-size: 1.4em;
+		color: black;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+
+		margin-bottom: 0;
+	}
+
+	.landing__h3 {
+		font-size: 1em;
+		letter-spacing: 0.3em;
+
+		margin-bottom: 3em;
+	}
+
+
+.slide {
+	position: absolute !important;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+	.slide-01 { background-image: url('../images/slide_1.jpg'); }
+	.slide-02 { background-image: url('../images/slide_2.jpg'); }
+	.slide-03 { background-image: url('../images/slide_3.jpg'); }
+	.slide-04 { background-image: url('../images/slide_4.jpg'); }
+	.slide-05 { background-image: url('../images/slide_5.jpg'); }
+	.slide-06 { background-image: url('../images/slide_6.jpg'); }
+	.slide-07 { background-image: url('../images/slide_7.jpg'); }
+	.slide-08 { background-image: url('../images/slide_8.jpg'); }
+	.slide-09 { background-image: url('../images/slide_9.jpg'); }
+

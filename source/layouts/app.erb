@@ -1,0 +1,26 @@
+
+<% wrap_layout :layout do %>
+<header class="app__header">
+	<div class="app__header__left">
+		<button class="app__header__btn app__header__btn--menu" id="app__header__btn--menu"><i class="swapp-menu"></i></button>
+	</div>
+
+	<a href="/" class="app__header__logo"><i class="swapp-logotype"></i></a>
+
+	<div class="app__header__right">
+		<button class="app__header__btn app__header__btn--alerts"><i class="swapp-bell"></i></button>
+	</div>
+</header>
+
+
+<nav class="app__nav" id="app__nav">
+	
+</nav>
+
+
+<section class="app" id="app">
+	
+	<%= yield %>
+
+</section>
+<% end %>

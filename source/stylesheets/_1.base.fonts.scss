@@ -1,0 +1,66 @@
+
+@charset "UTF-8";
+
+@font-face {
+  font-family: "swapp";
+  src:url("fonts/swapp.eot");
+  src:url("fonts/swapp.eot?#iefix") format("embedded-opentype"),
+    url("fonts/swapp.ttf") format("truetype"),
+    url("fonts/swapp.svg#swapp") format("svg"),
+    url("fonts/swapp.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "swapp" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="swapp-"]:before,
+[class*=" swapp-"]:before {
+  font-family: "swapp" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.swapp-facebook:before {
+  content: "f";
+}
+
+.swapp-menu:before {
+  content: "m";
+}
+
+.swapp-settings:before {
+  content: "s";
+}
+
+.swapp-bell:before {
+  content: "a";
+}
+
+.swapp-logotype:before {
+  content: "L";
+}
+
+.swapp-logo:before {
+  content: "l";
+}
+

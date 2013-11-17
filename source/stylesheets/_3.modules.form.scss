@@ -1,0 +1,26 @@
+
+.pillbox {
+	font-size: 0.8em;
+	color: $darkgray;
+	text-transform: uppercase;
+
+	width: 100%;
+
+	padding: 1.5em 2em;
+	border: none;
+	border-radius: 1em;
+
+
+	&:focus {
+		outline: none !important;
+	}
+}
+
+	.pillbox--just_one {
+		width: 70%;
+
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+

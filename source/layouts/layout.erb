@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+    <title><%= current_page.data.title || "WeSwapp" %></title>
+
+
+    <meta property="og:title" content="WeSwapp"/>
+    <meta property="og:url" content="https://www.weswapp.com/landing/"/>
+    <meta property="og:site_name" content="WeSwapp"/>
+    <meta property="og:site_name" content="WeSwapp"/>
+    <meta property="og:image" content="https://www.weswapp.com/images/WeSwapp_Facebook_Profil.jpg"/>
+
+    <meta property="og:description" content="WeSwapp is a quick and fun way to trade or give away anything. Take a picture, add a short description and put it up on the marketplace." />
+
+    
+    
+    
+    <link href='http://fonts.googleapis.com/css?family=Raleway:700,300' rel='stylesheet' type='text/css'>
+    
+
+    
+    <link rel="icon" href="http://backbonejs.org/docs/images/favicon.ico">
+    
+    <%= stylesheet_link_tag "normalize", "all" %>
+    
+
+
+    <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45767585-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    </script>
+  </head>
+  
+  <body class="<%= page_classes %>">
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+    window.fbAsyncInit = function() {
+        FB.init({
+        appId      : '496720737093812',
+        status     : true, 
+        cookie     : true,
+        xfbml      : true
+        })
+
+        FB.Event.subscribe('auth.authResponseChange', function(response){
+            App.swapper.set_facebook_information(response);
+        });
+    };
+
+    (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+    </script>
+
+
+
+
+    <%= yield %>
+
+    
+    
+    <%= templates %>
+    
+    <%= javascript_include_tag  "all" %>
+
+
+  </body>
+</html>

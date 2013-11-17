@@ -1,0 +1,34 @@
+
+.app__nav {
+	overflow: hidden;
+
+	
+	@include translate(0, -100%);
+	@include transformer(0.3s);
+
+	&.app__nav--active {
+		@include translate(0, 0);
+	}
+
+}
+
+	.app__nav__link {
+		display: block;
+ 
+		color: white;
+
+		padding: 0.8em 2em;
+		background: $mint;
+
+
+		&:last-child {
+			border-bottom: 0.4em solid $mint--darker;
+		}
+
+		@for $i from 0 through 6 {
+			&:nth-child(#{$i}) {
+				background: darken($mint, 2% * $i);
+			}
+		}
+	}
+

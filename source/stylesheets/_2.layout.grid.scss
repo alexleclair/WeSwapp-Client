@@ -1,0 +1,55 @@
+
+$gutter: 4em;
+
+
+$breakpoints:		"mobile" "38em", 
+					"tablet" "64em";
+
+
+.grid {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	
+	
+	margin-left: -$gutter;
+	
+	word-spacing:-0.43em;
+	
+	
+	& > & {
+		margin-left: 0;
+	}
+}
+	.grid--center {
+		text-align: center;
+		
+		& .col {
+			text-align: left;
+		}
+	}
+
+
+
+	.col {
+		display: inline-block;
+		vertical-align: top;
+		
+		padding-left: $gutter;
+
+		word-spacing: normal;
+	}
+	
+	
+	
+		@for $i from 0 through 12 {
+		  .span#{$i} { width: (100% / 12) * $i; }
+		  .push#{$i} { margin-left: (100% / 12) * $i; }
+		  .extend#{$i} { margin-right: (100% / 12) * $i; }
+		  
+		  @each $breakpoint in $breakpoints {
+				.#{nth($breakpoint, 1)}--span#{$i} { @media all and (max-width:#{nth($breakpoint, 2)}) { width: (100% / 12) * $i !important; } }
+				.#{nth($breakpoint, 1)}--push#{$i} { @media all and (max-width:#{nth($breakpoint, 2)}) { margin-left: (100% / 12) * $i!important; } }
+				.#{nth($breakpoint, 1)}--extend#{$i} { @media all and (max-width:#{nth($breakpoint, 2)}) { margin-right: (100% / 12) * $i!important; } }
+			}
+		}
