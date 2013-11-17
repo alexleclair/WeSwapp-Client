@@ -1,18 +1,46 @@
 
 
-<section class="grid grid--center items-new" id="items-new">\
+<div class="header__bar header__bar--item"></div>
+
 
 <form id="item-new-form">
-	<div class="hide">
-		<input type="file" id="imageLoader" name="imageLoader"/>
-		<canvas id="imageCanvas"></canvas>
-	</div>
-	<a class="upload-field">Load image</a>
-	<input type="text" name="title" />
-	<textarea name="description"></textarea>
-	<a class="submit">Submit</a>
+	<h1 class="item__header__h1">Upload a Swapp</h1><br>
+
+	<section class="grid">
+		<div class="col span6 mobile--span12">
+			<div class="hide item-new__field">
+				<input type="file" id="imageLoader" name="imageLoader"/>
+			</div>
+
+			<p class="item-new__field">
+				<strong>Title:</strong><br>
+				<input type="text" class="pillbox" name="title" placeholder="Give it a name"/>
+			</p>
+			
+			<p class="item-new__field">
+				<strong>Description:</strong><br>
+				<textarea name="description" class="pillbox" placeholder="Write a tiny description"></textarea>
+			</p>
+
+			
+			
+		</div>
+
+
+		<div class="col span6 mobile--span12">
+			<canvas id="imageCanvas"></canvas>
+		</div>
+
+		<div class="col span12">
+			<a class="submit button button--full button--icon button--swapp"><i class="swapp-logo"></i> Add Swapp</a>
+		</div>
+	</section>
 </form>
 
 
 
-</section>
+
+	
+	
+	
+

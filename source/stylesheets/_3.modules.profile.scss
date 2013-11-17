@@ -5,6 +5,12 @@
 	.profile__header {
 		position: relative;
 		text-align: center;
+
+
+		& + .big-bottom {
+			margin-bottom: 3em;
+		}
+
 	}
 
 
@@ -24,5 +30,5 @@
 		.profile__header__h2 {
 			font-size: 1.2em;
 
-			margin-bottom: 4em;
+			margin-bottom: 1em;
 		}

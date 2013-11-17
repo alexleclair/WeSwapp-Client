@@ -373,7 +373,22 @@
 		}
 
 
+#item-new-form {
+	margin-top: 10em;
 
+	.item__header__h1 {
+		text-align: center;
+	}
+
+	.pillbox {
+		margin-top: 0.5em;
+		background: $lightgray;
+	}
+}
+
+	.item-new__field {
+		margin-bottom: 1.5em;
+	}
 
 
 
