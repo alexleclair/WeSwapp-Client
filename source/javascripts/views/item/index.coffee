@@ -22,8 +22,6 @@ class App.Views.ItemIndex extends Backbone.View
 	
 	render: ->
 		this.$el.html @template
-
-		this.render_items()
 		
 		this
 		
