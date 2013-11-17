@@ -75,6 +75,16 @@ class App.Views.Notifications extends Backbone.View
 				item.your_item = item.item_requested;
 				item.their_item = item.item_initiator;
 
+			item.is_pending = false;
+			item.is_accepted = false;
+			item.is_rejected = false;
+			if item.status == 'pending'
+				item.is_pending = true;
+			if item.status == 'accepted'
+				item.is_accepted = true;
+			if item.status == 'rejected'
+				item.is_rejected = true;
+
 			item.gender_word = 'their';
 			if item.them.gender == 'male'
 				item.gender_word = 'his'
@@ -85,7 +95,18 @@ class App.Views.Notifications extends Backbone.View
 
 
 	add_notification: (item)->
-		this.$el.append @notifications_template(item)
+		$item = $(@notifications_template(item));
+		$item.find('a.btn-accept').on 'click', (e)->
+			e.preventDefault();
+			$.post App.APIRoot + '/contacts/'+$item.attr('data-contact-id')+'?authToken='+App.swapper.attributes.auth_info.accessToken, {status:'accepted'}
+			$item.slideUp('fast');
+			return false;
+		$item.find('a.btn-reject').on 'click', (e)->
+			e.preventDefault();
+			$.post App.APIRoot + '/contacts/'+$item.attr('data-contact-id')+'?authToken='+App.swapper.attributes.auth_info.accessToken, {status:'rejected'}
+			$item.slideUp('fast');
+			return false;
+		this.$el.append $item;
 
 
 	toggle_menu: (e)->
