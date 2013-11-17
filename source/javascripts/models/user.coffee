@@ -12,7 +12,8 @@ class App.Models.User extends Backbone.Model
 		else
 			response
 
+
 	load_items: ->
 		_this = this;
 		$.get @urlRoot+this.attributes.id+'/items', (data)->
-			_this.set {items:data.response}
+			_this.set {items: data.response}

@@ -7,18 +7,22 @@ class App.Views.User extends Backbone.View
 	
 	
 	initialize: ->
-		@model.on "sync", this.render, this
+		@model.on "change", this.render, this
 		
 	
 	render: ->
-		this.render_items();
+		if @model.attributes.created_at?
+			_date = @model.attributes.created_at.split('-')
+			monthNames = ['','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-		#_date = @model.attributes.created_at.split('-')
-		monthNames = ['','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+			@model.set {date: monthNames[parseInt(_date[1])]+'. '+_date[0]}
 
 
-		#@model.set {date: monthNames[parseInt(_date[1])]+'. '+_date[0]};
+
+
 		this.$el.html @template(@model.attributes)
+
+		this.render_items()
 		
 		this
 
@@ -31,4 +35,6 @@ class App.Views.User extends Backbone.View
 
 
 	add_item: (item)->
-		this.$el.find("section.items").append this.item_template(item)
+		console.log item
+
+		this.$el.find(".items").append this.item_template(item)

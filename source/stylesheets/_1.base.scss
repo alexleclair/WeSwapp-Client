@@ -104,9 +104,41 @@ a {
 	-webkit-transform: scale($i, $i);
 }
 
+@mixin rotate($deg) {
+	transform: rotate($deg);
+	-ms-transform: rotate($deg);
+	-webkit-transform: rotate($deg);
+}
+
+@mixin transform($transform) {
+	transform: $transform;
+	-ms-transform: $transform;
+	-webkit-transform: $transform;
+}
+
 @mixin transition($transition...) {
 	transition: $transition;
 	-webkit-transition: $transition;
 }
 
+@mixin gradient {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right top,
+		color-stop(0, #D9857B),
+		color-stop(1, #6C6CF7)
+	);
+	background-image: -o-linear-gradient(right top, #D9857B 0%, #6C6CF7 100%);
+	background-image: -moz-linear-gradient(right top, #D9857B 0%, #6C6CF7 100%);
+	background-image: -webkit-linear-gradient(right top, #D9857B 0%, #6C6CF7 100%);
+	background-image: -ms-linear-gradient(right top, #D9857B 0%, #6C6CF7 100%);
+	background-image: linear-gradient(to right top, #D9857B 0%, #6C6CF7 100%);
+}
+
+
+@-webkit-keyframes hue {
+	from {-webkit-filter: hue-rotate(0deg)}
+	to {-webkit-filter: hue-rotate(360deg)}
+}
 

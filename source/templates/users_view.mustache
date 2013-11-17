@@ -1,9 +1,15 @@
-<img src="https://graph.facebook.com/{{fb_uid}}/picture?type=large" class="item__owner_image">
-<h1>{{firstname}} <span class="thin">{{lastname}}</span></h1>
-<h2>Swapper since {{date}}</h2>
+<div class="profile__header__bar"></div>
 
-<section class="grid grid--center items" id="items">
+<section class="grid">
+	<header class="profile__header col span12">
+		<div class="profile__header__image" style="background-image:url('https://graph.facebook.com/{{fb_uid}}/picture?width=200&height=200')"></div>
+		
+		<h1 class="profile__header__h1">{{firstname}} <span class="thin">{{lastname}}</span></h1>
+		<h2 class="profile__header__h2 thin">Swapper since {{date}}</h2>
+	</header>
+</section>
 
 
+<section class="grid grid--center items items--profile" id="items">
 
 </section>

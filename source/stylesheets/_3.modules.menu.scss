@@ -18,7 +18,7 @@
  
 		color: white;
 
-		padding: 0.4em 1.5em;
+		padding: 0.5em 1.5em 0.4em;
 		background: $mint;
 
 
@@ -26,7 +26,7 @@
 		&:before {
 			position: absolute;
 			top: 0.6em;
-			right: 0;
+			right: 0.2em;
 
 			font-size: 1.5em;
 		}
