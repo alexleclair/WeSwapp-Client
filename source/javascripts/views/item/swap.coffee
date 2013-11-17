@@ -7,6 +7,7 @@ class App.Views.ItemSwap extends Backbone.View
 
 	events: {
 		"click .js-proposal":"select_proposal"
+		"click .button--swapp-item":"swapp_item"
 	}
 
 	
@@ -34,7 +35,22 @@ class App.Views.ItemSwap extends Backbone.View
 		this
 
 
+	swapp_item: (e)=>
+		e.preventDefault();
 
+		$.post App.APIRoot + '/contacts/?authToken='+App.swapper.attributes.auth_info.accessToken, 
+			requested_item_id:@item.attributes.id
+			item_id:$('ul.proposals li.proposal--selected').attr('data-item-id')
+		, (response)=>
+			$.get App.APIRoot + '/contacts/?authToken='+App.swapper.attributes.auth_info.accessToken, (response)->
+				App.notifications_view.model.attributes.notifications = response.response;
+				App.notifications_view.model.trigger('change');
+			$('#app__header__btn--notifications').trigger('click');
+			App.router.navigate '/items/' + @item.attributes.id,
+            	trigger:true
+			
+
+		return false;
 	select_proposal: (e)->
 		$(".js-proposal").removeClass "proposal--selected"
 		$(e.currentTarget).addClass "proposal--selected"

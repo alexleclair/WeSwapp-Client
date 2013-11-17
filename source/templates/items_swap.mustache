@@ -16,7 +16,7 @@
 	<div class="col span6 mobile--span12">
 		<ul class="proposals">
 		{{#swapper_items}}
-			<li class="proposal js-proposal">
+			<li class="proposal js-proposal" data-item-id="{{id}}">
 				<div style="background-image:url('{{image}}')" class="item__image proposal__image"></div>
 				<span class="proposal__title">{{title}}</span>
 			</li>
@@ -26,7 +26,7 @@
 			</li>
 		</ul>
 
-		<a href="/items/{{id}}/swap" class="button button--icon button--swapp proposals__button"><i class="swapp-logo"></i> Swapp It!</a>
+		<a href="/items/{{id}}/swap" class="button button--icon button--swapp proposals__button button--swapp-item" id="button--swapp-item"><i class="swapp-logo"></i> Swapp It!</a>
 	</div>
 	
 	
