@@ -14,11 +14,22 @@
 
 	.app__nav__link {
 		display: block;
+		position: relative;
  
 		color: white;
 
-		padding: 0.8em 2em;
+		padding: 0.4em 1.5em;
 		background: $mint;
+
+
+
+		&:before {
+			position: absolute;
+			top: 0.6em;
+			right: 0;
+
+			font-size: 1.5em;
+		}
 
 
 		&:last-child {
@@ -30,5 +41,26 @@
 				background: darken($mint, 2% * $i);
 			}
 		}
+
+
+		i {
+			font-size: 1.8em;
+			opacity: 0.8;
+
+			vertical-align: middle;
+
+			margin-right: 0.5em;
+		}
 	}
+
+
+		.app__nav__image {
+			width: 2em;
+			vertical-align: middle;
+
+			padding: 0.5em 0;
+			margin-right: 0.7em;
+
+			border-radius: 50%;
+		}
 
