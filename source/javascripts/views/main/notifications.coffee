@@ -110,6 +110,7 @@ class App.Views.Notifications extends Backbone.View
 
 
 	toggle_menu: (e)->
+		e.preventDefault()
 		e.stopImmediatePropagation()
 
 		$("#app__header__btn--notifications").toggleClass "app__header__btn--active"
