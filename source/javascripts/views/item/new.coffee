@@ -1,5 +1,5 @@
 class App.Views.ItemNew extends Backbone.View
-	url: "https://5c4ae6ba.ngrok.com/items?authToken=CAAHDw88WSLQBABoBZBGEl5cIwST5HT9k0pmiLjkp3GWGqtKABOdDbmoxFmebHEcAUToFGBXHPzFGOXKl4wT04aC0yAxjH6Nrf6Bd7v6qWadGNoOpHeT60XkVv6UrVNeDPyYORQCnpZBKhCDh0zBkhLM0Uk4TiM65iqYZAomqCADrk3UBW1Pv3cjU1drzFWpdEUMbe55KwZDZD"
+	url: "https://5c4ae6ba.ngrok.com/items"
 	el: $("#app")
 	imageData:null
 
