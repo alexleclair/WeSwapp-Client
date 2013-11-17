@@ -34,6 +34,8 @@ class App.Models.Swapper extends Backbone.Model
 
 				_this.get_items()
 
+				App.notifications_view.render()
+
 			
 
 

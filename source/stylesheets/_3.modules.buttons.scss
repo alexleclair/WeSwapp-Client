@@ -77,15 +77,59 @@
 .app__header__btn {
 	@include normalize_btn;
 
+	position: relative;
+
 	padding: 0.6em 0.8em 0.5em;
 
+	font-size: 2em;
+	color: $bittersweet--darker;
+
+
 	background: none;
+
+
+	.count {
+		display: inline-block;
+		position: absolute;
+		bottom: 1.5em;
+		right: 1.5em;
+
+		color: white;
+		font-family: $header_font;
+		font-size: 0.4em;
+		line-height: 1.2em;
+
+
+		width: 1.5em;
+		height: 1.5em;
+
+		background: $mint;
+
+		border-radius: 50%;
+
+
+		&:empty {
+			background: none;
+		}
+	}
 }
+
+	.app__header__btn--notifications {
+
+		&.app__header__btn--active {
+			background: $aqua;
+		}
+	}
 
 	.app__header__btn--active {
 		color: white !important;
 
 		background: $mint;
+
+
+		.count {
+			background: none !important;
+		}
 	}
 
 

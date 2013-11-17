@@ -28,7 +28,7 @@ class App.Views.Notifications extends Backbone.View
 		$count = $bell.find('.count');
 
 		items = @model.attributes.notifications;
-		console.log 'Model', @model.attributes
+		
 		if items?
 			this.$el.html @template(items)
 			this.render_notifications()
@@ -62,7 +62,7 @@ class App.Views.Notifications extends Backbone.View
 
 			item.classes = classes.join(' ');
 			item.user = user;
-			if item.item_initiator.user_id == App.swapper.attributes.info.id
+			if App.swapper.attributes.info? and item.item_initiator.user_id == App.swapper.attributes.info.id
 				item.is_initiator = true;
 				item.you = item.user_initiator;
 				item.them = item.item_requested.user;
@@ -110,6 +110,7 @@ class App.Views.Notifications extends Backbone.View
 
 
 	toggle_menu: (e)->
+		e.preventDefault()
 		e.stopImmediatePropagation()
 
 		$("#app__header__btn--notifications").toggleClass "app__header__btn--active"

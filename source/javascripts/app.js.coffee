@@ -35,7 +35,7 @@ window.App =
 		@notifications_view = new App.Views.Notifications
 			model: @swapper
 
-		@notifications_view.render()
+		
 
 
 		@router = new App.Routers.Router()
