@@ -10,6 +10,7 @@ class App.Routers.Router extends Backbone.Router
 	routes: {
 		'':'home'
 		'items/:id':'items'
+		'users/:id':'users'
 	}
 			
 		
@@ -47,6 +48,27 @@ class App.Routers.Router extends Backbone.Router
 
 			@current_view = new App.Views.Item
 				model: item
+
+			@current_view.render()
+
+	users: (id)->
+		user = App.users.get(id)
+
+
+		if user?
+			@current_view = new App.Views.User
+				model: App.users.get id
+
+			@current_view.render()
+
+		else
+			user = new App.Models.User {id: id}
+			user.fetch()
+
+			App.users.add user
+
+			@current_view = new App.Views.User
+				model: user
 
 			@current_view.render()
 

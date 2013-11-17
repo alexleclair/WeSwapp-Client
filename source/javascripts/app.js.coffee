@@ -19,6 +19,7 @@ window.App =
 		
 		@items = new App.Collections.Items()
 		@swapper = new App.Models.Swapper()
+		@users = new App.Collections.Users()
 
 
 
