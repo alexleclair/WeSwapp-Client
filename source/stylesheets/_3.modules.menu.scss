@@ -12,7 +12,7 @@
 
 }
 
-	.app__nav__link, .app__notifications__link {
+	.app__nav__link {
 		display: block;
 		position: relative;
  
@@ -55,10 +55,39 @@
 
 			margin-right: 0.5em;
 		}
+
+
+
+		&.app__nav__link--notification {
+			&:last-child {
+				border-bottom: 0.4em solid $aqua--darker;
+			}
+
+
+			@for $i from 0 through 6 {
+				&:nth-child(#{$i}) {
+					background: darken($aqua, 3% * $i);
+				}
+			}
+		}
 	}
 
 
-		.app__nav__image, .app__notifications__image {
+
+		.app__nav__link--notification {
+			line-height: 1.2em;
+
+			padding: 1.5em;
+
+			strong {
+				font-weight: 300;
+				color: $sunflower;
+			}
+		}
+
+
+
+		.app__nav__image {
 			width: 2em;
 			vertical-align: middle;
 
@@ -66,5 +95,11 @@
 			margin-right: 0.7em;
 
 			border-radius: 50%;
+
+
+			.app__nav__link--notification & {
+				float: left;
+				width: 3em;
+			}
 		}
 

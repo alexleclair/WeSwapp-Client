@@ -16,7 +16,8 @@ class App.Views.Menu extends Backbone.View
 	
 	
 	initialize: ->
-		$(this.menu_el).on "touchstart click", this.toggle_menu
+		$(this.menu_el).on "touchstart", this.toggle_menu
+		$(this.menu_el).on "click", this.toggle_menu
 
 		@model.on "change", this.render, this
 	
@@ -29,6 +30,7 @@ class App.Views.Menu extends Backbone.View
 
 
 	toggle_menu: (e)->
+		e.preventDefault()
 		e.stopImmediatePropagation()
 
 		$("#app__header__btn--menu").toggleClass "app__header__btn--active"
