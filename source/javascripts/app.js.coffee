@@ -22,6 +22,7 @@ window.App =
 		@swapper = new App.Models.Swapper()
 		@users = new App.Collections.Users()
 		@notifications = new App.Collections.Notifications()
+		@favorites = new App.Collections.Favorites()
 
 
 

@@ -40,7 +40,18 @@ class App.Views.ItemIndex extends Backbone.View
 
 
 	add_item: (item)->
-		this.$el.find("#items").append @item_template(item.attributes)
+		$template = $(@item_template(item.attributes));
+		$template.find('.item__star').on 'click', (e)->
+			e.preventDefault();
+			if $(this).is('.active')
+				item.removeFavorite();
+				$(this).removeClass('active');
+			else
+				item.addFavorite();
+				$(this).addClass('active');
+
+			return false;
+		this.$el.find("#items").append $template
 
 
 	remove_item: (item)->
