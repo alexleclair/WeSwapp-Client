@@ -33,7 +33,7 @@ class App.Views.ItemNew extends Backbone.View
 
 					canvas.width = img.width * ratio
 					canvas.height = img.height * ratio
-					ctx.drawImage(canvasCopy, 0, 0, canvasCopy.width, canvasCopy.height, 0, 0, canvas.width, canvas.height);
+					ctx.drawImage(img, 0, 0, ratio*img.width, ratio*img.height, 0, 0, canvas.width, canvas.height);
 					_this.imageData = canvas.toDataURL 'image/jpeg';
 
 				img.src = event.target.result
