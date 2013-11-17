@@ -12,14 +12,13 @@ class App.Views.User extends Backbone.View
 	
 	render: ->
 		this.render_items();
-		
+
 		#_date = @model.attributes.created_at.split('-')
 		monthNames = ['','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 
 		#@model.set {date: monthNames[parseInt(_date[1])]+'. '+_date[0]};
 		this.$el.html @template(@model.attributes)
-
 		
 		this
 
@@ -32,4 +31,4 @@ class App.Views.User extends Backbone.View
 
 
 	add_item: (item)->
-		this.$el.find("#items").append @item_template(item)
+		this.$el.find("section.items").append this.item_template(item)
