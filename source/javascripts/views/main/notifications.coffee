@@ -25,6 +25,8 @@ class App.Views.Notifications extends Backbone.View
 	
 	render: ->
 		$bell = $('#app__header__btn--notifications');
+		$count = $bell.find('.count');
+
 		items = @model.attributes.notifications;
 		if items?
 			this.$el.html @template(items)
@@ -36,7 +38,7 @@ class App.Views.Notifications extends Backbone.View
 		else
 			$bell.removeClass('unread');
 
-		$bell.find('.count').text(count)
+		$count.text(count)
 		
 		this
 
