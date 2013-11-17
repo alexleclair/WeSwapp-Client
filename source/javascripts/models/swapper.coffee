@@ -1,6 +1,6 @@
 
 class App.Models.Swapper extends Backbone.Model
-	urlRoot: "https://5c4ae6ba.ngrok.com/users/me"
+	urlRoot: App.APIRoot + "/users/me"
 
 	initialize: ->
 
@@ -20,10 +20,14 @@ class App.Models.Swapper extends Backbone.Model
 		_this.set {auth_info: info.authResponse}
 
 		if info.authResponse?
-			$.get @urlRoot+"?authToken="+info.authResponse.accessToken, (response)->
+			authToken = info.authResponse.accessToken;
+			$.get @urlRoot+"?authToken="+authToken, (response)->
 				info = response.response
 
 				_this.set {info}
+			$.get App.APIRoot + '/contacts/?authToken='+authToken, (response)->
+				_this.set {notifications:response.response}
+			
 
 
 

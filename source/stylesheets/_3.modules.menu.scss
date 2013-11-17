@@ -1,5 +1,5 @@
 
-.app__nav {
+.app__nav, .app__notifications {
 	overflow: hidden;
 
 	
@@ -12,7 +12,7 @@
 
 }
 
-	.app__nav__link {
+	.app__nav__link, .app__notifications__link {
 		display: block;
 		position: relative;
  
@@ -58,7 +58,7 @@
 	}
 
 
-		.app__nav__image {
+		.app__nav__image, .app__notifications__image {
 			width: 2em;
 			vertical-align: middle;
 

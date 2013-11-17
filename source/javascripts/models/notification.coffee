@@ -1,6 +1,6 @@
 
-class App.Models.Item extends Backbone.Model
-	urlRoot: App.APIRoot + "/items/"
+class App.Models.Notification extends Backbone.Model
+	urlRoot: App.APIRoot + "/contact/"
 
 	initialize: ->
 
