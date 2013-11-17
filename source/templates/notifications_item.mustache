@@ -1,0 +1,35 @@
+<li data-contact-id="{{id}}">
+	<a href="items/{{their_item.id}}" class="app__nav__link app__nav__link--notification swapp-right">
+			<img src="https://graph.facebook.com/{{them.fb_uid}}/picture" class="app__nav__image">
+
+		{{#is_initiator}}
+			{{#is_pending}}
+				You aksed <strong>{{them.firstname}}</strong> to trade {{gender_word}} <strong>{{item_requested.title}}</strong> for your <strong>{{item_initiator.title}}</strong>
+			{{/is_pending}}
+			{{#is_accepted}}
+				<strong>{{them.firstname}}</strong> accepted to trade {{gender_word}} <strong>{{item_requested.title}}</strong> for your <strong>{{item_initiator.title}}</strong>
+			{{/is_accepted}}
+			{{#is_rejected}}
+				<strong>{{them.firstname}}</strong> refused to trade {{gender_word}} <strong>{{item_requested.title}}</strong> for your <strong>{{item_initiator.title}}</strong>
+			{{/is_rejected}}
+
+		{{/is_initiator}}
+		{{^is_initiator}}
+			{{#is_pending}}
+				<strong>{{them.firstname}}</strong> wants to swapp your <strong>{{item_requested.title}}</strong> for {{gender_word}} <strong>{{item_initiator.title}}</strong>
+			{{/is_pending}}
+			{{#is_accepted}}
+				You accepted <strong>{{them.firstname}}</strong>'s offer to swapp your <strong>{{item_requested.title}}</strong> for {{gender_word}} <strong>{{item_initiator.title}}</strong>
+			{{/is_accepted}}
+			{{#is_rejected}}
+				You refused <strong>{{them.firstname}}</strong>'s offer to swapp your <strong>{{item_requested.title}}</strong> for {{gender_word}} <strong>{{item_initiator.title}}</strong>
+			{{/is_rejected}}
+		{{/is_initiator}}
+	</a>
+	{{^is_initiator}}
+		{{#is_pending}}
+			<a class="btn-accept">Accept</a>
+			<a class="btn-reject">Reject</a>
+		{{/is_pending}}
+	{{/is_initiator}}
+</li>

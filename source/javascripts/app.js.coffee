@@ -12,6 +12,7 @@ window.App =
 	Collections: {}
 	Views: {}
 	Routers: {}
+	APIRoot: 'https://5c4ae6ba.ngrok.com'
 	
 	
 	
@@ -20,6 +21,8 @@ window.App =
 		@items = new App.Collections.Items()
 		@swapper = new App.Models.Swapper()
 		@users = new App.Collections.Users()
+		@notifications = new App.Collections.Notifications()
+		@favorites = new App.Collections.Favorites()
 
 
 
@@ -28,6 +31,11 @@ window.App =
 			model: @swapper
 
 		@menu_view.render()
+
+		@notifications_view = new App.Views.Notifications
+			model: @swapper
+
+		@notifications_view.render()
 
 
 		@router = new App.Routers.Router()

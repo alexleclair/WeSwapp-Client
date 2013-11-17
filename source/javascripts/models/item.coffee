@@ -1,6 +1,6 @@
 
 class App.Models.Item extends Backbone.Model
-	urlRoot: "https://5c4ae6ba.ngrok.com/items/"
+	urlRoot: App.APIRoot + "/items/"
 
 	initialize: ->
 
@@ -11,3 +11,8 @@ class App.Models.Item extends Backbone.Model
 
 		else
 			response
+
+	addFavorite: =>
+		$.post App.APIRoot+'/favorites/'+this.attributes.id+'?authToken='+App.swapper.attributes.auth_info.accessToken,{active:1}
+	removeFavorite: =>
+		$.post App.APIRoot+'/favorites/'+this.attributes.id+'?authToken='+App.swapper.attributes.auth_info.accessToken,{active:0}
