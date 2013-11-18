@@ -384,6 +384,11 @@
 		margin-top: 0.5em;
 		background: $lightgray;
 	}
+
+	canvas{
+		width:100%;
+		height:auto;
+	}
 }
 
 	.item-new__field {
