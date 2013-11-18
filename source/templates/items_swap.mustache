@@ -1,0 +1,34 @@
+
+
+<section class="grid">
+	{{#item}}
+	<div class="col span6 mobile--span12">
+		<h1 class="item__bar__h1">Propose a Swapp <span class="thin">for this item:</span></h1>
+
+		<div class="header__image header__image--item" style="background-image:url('{{image}}')">
+			<a href="/users/{{user.id}}" class="item__owner_link"><img src="https://graph.facebook.com/{{user.fb_uid}}/picture?width=200&height=200" class="item__owner_image"></a>
+		</div>
+		<h2 class="item__bar__h2">{{title}}</h2>
+	</div>
+	{{/item}}
+
+	
+	<div class="col span6 mobile--span12">
+		<ul class="proposals">
+		{{#swapper_items}}
+			<li class="proposal js-proposal" data-item-id="{{id}}">
+				<div style="background-image:url('{{image}}')" class="item__image proposal__image"></div>
+				<span class="proposal__title">{{title}}</span>
+			</li>
+		{{/swapper_items}}
+			<a href="/items/new"><li class="proposal proposal--new">
+				<span class="proposal__title">Upload a new Swapp</span>
+			</li>
+		</ul>
+
+		<a href="/items/{{id}}/swap" class="button button--icon button--swapp proposals__button button--swapp-item" id="button--swapp-item"><i class="swapp-logo"></i> Swapp It!</a>
+	</div>
+	
+	
+
+</section>

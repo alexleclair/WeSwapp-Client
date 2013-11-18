@@ -1,11 +1,11 @@
 
 
-class App.Collections.Items extends Backbone.Collection
+class App.Collections.Favorites extends Backbone.Collection
 	
 	model: App.Models.Item
 	
 	
-	url: App.APIRoot + "/items"
+	url: App.APIRoot + "/favorites/"
 
 	fetch:(token)=>
 		if !token? && App.swapper.attributes.auth_info? && App.swapper.attributes.auth_info.accessToken?
@@ -13,15 +13,14 @@ class App.Collections.Items extends Backbone.Collection
 
 		if !token?
 			token = '';
-		else
-			token = '?authToken='+token
 		_this = this
-		$.get @url+token, (response)->
+		$.get @url+'?authToken='+token, (response)->
 			_this.reset();
 			_this.set _this.parse(response)
 			_this.trigger('sync')
 
 	parse: (response)->
+		#App.swapper.set {notifications:response.response}
 		response.response
 
 		

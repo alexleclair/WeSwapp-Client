@@ -12,6 +12,7 @@ window.App =
 	Collections: {}
 	Views: {}
 	Routers: {}
+	APIRoot: 'https://www.weswapp.com/api'
 	
 	
 	
@@ -19,6 +20,9 @@ window.App =
 		
 		@items = new App.Collections.Items()
 		@swapper = new App.Models.Swapper()
+		@users = new App.Collections.Users()
+		@notifications = new App.Collections.Notifications()
+		@favorites = new App.Collections.Favorites()
 
 
 
@@ -27,6 +31,11 @@ window.App =
 			model: @swapper
 
 		@menu_view.render()
+
+		@notifications_view = new App.Views.Notifications
+			model: @swapper
+
+		
 
 
 		@router = new App.Routers.Router()

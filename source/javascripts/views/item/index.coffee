@@ -22,6 +22,8 @@ class App.Views.ItemIndex extends Backbone.View
 	
 	render: ->
 		this.$el.html @template
+
+		@collection.fetch()
 		
 		this
 		
@@ -29,13 +31,27 @@ class App.Views.ItemIndex extends Backbone.View
 	render_items: ->
 		_this = this
 
+
+		this.$el.find("#items").html ""
+
 		@collection.each (item)->
 			item.set {image: item.get("medias")[0]}
 			_this.add_item item
 
 
 	add_item: (item)->
-		this.$el.find("#items").append @item_template(item.attributes)
+		$template = $(@item_template(item.attributes));
+		$template.find('.item__star').on 'click', (e)->
+			e.preventDefault();
+			if $(this).is('.active')
+				item.removeFavorite();
+				$(this).removeClass('active');
+			else
+				item.addFavorite();
+				$(this).addClass('active');
+
+			return false;
+		this.$el.find("#items").append $template
 
 
 	remove_item: (item)->

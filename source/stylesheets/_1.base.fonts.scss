@@ -40,10 +40,6 @@
 }
 
 
-.swapp-facebook:before {
-  content: "f";
-}
-
 .swapp-menu:before {
   content: "m";
 }
@@ -62,5 +58,25 @@
 
 .swapp-logo:before {
   content: "l";
+}
+
+.swapp-facebook:before {
+  content: "b";
+}
+
+.swapp-unlock:before {
+  content: "c";
+}
+
+.swapp-star:before {
+  content: "d";
+}
+
+.swapp-wrench:before {
+  content: "e";
+}
+
+.swapp-right:before {
+  content: "1";
 }
 
