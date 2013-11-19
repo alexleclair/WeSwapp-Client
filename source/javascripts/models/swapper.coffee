@@ -25,14 +25,14 @@ class App.Models.Swapper extends Backbone.Model
 				info = response.response				
 
 				_this.set {info}
-				App.favorites.fetch authToken
+
+				_this.get_items()
+				App.favorites.fetch {token: authToken, favorites: true}	
+				
 
 			$.get App.APIRoot + '/contacts/?authToken='+authToken, (response)->
 				_this.set {notifications:response.response}
-			
-
-
-				_this.get_items()
+				
 
 				App.notifications_view.render()
 

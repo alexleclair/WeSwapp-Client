@@ -39,6 +39,8 @@
 
 
 	.item__star {
+		cursor: pointer;
+
 		position: absolute;
 		top: -0.2em;
 		left: -0.2em;
@@ -51,7 +53,7 @@
 
 		@include transition(color 0.3s);
 
-		&:hover,&.active {
+		&:hover,&.item__star--active {
 			color: $sunflower;
 		}
 	}

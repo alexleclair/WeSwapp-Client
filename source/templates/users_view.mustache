@@ -2,7 +2,7 @@
 
 <section class="grid">
 	<header class="profile__header col span12">
-		<div class="header__image header__image--profile" style="background-image:url('https://graph.facebook.com/{{fb_uid}}/picture?width=200&height=200')"></div>
+		<div class="header__image header__image--profile" style="{{#fb_uid}}background-image:url('https://graph.facebook.com/{{fb_uid}}/picture?width=200&height=200'){{/fb_uid}}"></div>
 		
 		<h1 class="profile__header__h1">{{firstname}} <span class="thin">{{lastname}}</span></h1>
 		<h2 class="profile__header__h2 thin">Swapper since {{date}}</h2>

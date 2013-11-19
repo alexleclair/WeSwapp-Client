@@ -9,6 +9,7 @@ class App.Routers.Router extends Backbone.Router
 		'items/:id':'items'
 		'items/:id/swap':'item_swap'
 		'users/:id':'users'
+		'favorites':'favorites'
 	}
 			
 		
@@ -45,35 +46,33 @@ class App.Routers.Router extends Backbone.Router
 
 
 	items: (id)->
-		if id == 'favorites'
-			@current_view = new App.Views.ItemIndex
-				collection: App.favorites
-			@current_view.render();
-			App.favorites.trigger('sync');
-			return;
 		if id == 'new'
-			@current_view = new App.Views.ItemNew();
-			@current_view.render();
-			return;
-		item = App.items.get(id)
-
-
-		if item?
-			@current_view = new App.Views.Item
-				model: App.items.get id
-
+			@current_view = new App.Views.ItemNew()
+			
 			this.load_current_view()
+
 
 		else
-			item = new App.Models.Item {id: id}
-			item.fetch()
+			item = App.items.get(id)
 
-			App.items.add item
 
-			@current_view = new App.Views.Item
-				model: item
+			if item?
+				@current_view = new App.Views.Item
+					model: App.items.get id
 
-			this.load_current_view()
+				this.load_current_view()
+
+			else
+				item = new App.Models.Item {id: id}
+				item.fetch()
+
+				App.items.add item
+
+				@current_view = new App.Views.Item
+					model: item
+
+				this.load_current_view()
+
 
 
 	item_swap: (id)->
@@ -124,6 +123,16 @@ class App.Routers.Router extends Backbone.Router
 				model: user
 
 			this.load_current_view()
+
+
+
+	favorites: ->
+		@current_view = new App.Views.ItemIndex
+			collection: App.favorites
+
+		
+		this.load_current_view()
+
 
 
 

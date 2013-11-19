@@ -6,12 +6,13 @@ class App.Views.User extends Backbone.View
 	
 	
 	initialize: ->
-		@model.on "change", this.render, this
+		@model.on "change:firstname", this.render, this
+		@model.on "change:items", this.render_items, this
 		App.swapper.on "change:info", this.render, this
 
 	
 	render: ->
-		
+		console.log @model
 
 		if @model.attributes.created_at?
 			_date = @model.attributes.created_at.split('-')
@@ -21,7 +22,6 @@ class App.Views.User extends Backbone.View
 			@model.set {is_me: @model.id == App.swapper.get("info").id} if App.swapper.get("info")?
 
 
-		console.log @model
 		this.$el.html @template(@model.attributes)
 		App.wrapper.html this.$el
 
@@ -32,13 +32,12 @@ class App.Views.User extends Backbone.View
 
 
 	render_items: ->
-		_this = this
-		_.each @model.attributes.items, (item)->
-			item.image =  item.medias[0]
-			_this.add_item item
+		if @model.attributes.items?
+			items = new App.Collections.Items(@model.attributes.items)
+
+			@items_view = new App.Views.ItemIndex
+				collection: items
+
+			@items_view.render {wrapper: this.$el.find("#items"), user_id: @model.id}
 
 
-	add_item: (item)->
-		console.log item
-
-		this.$el.find(".items").append this.item_template(item)

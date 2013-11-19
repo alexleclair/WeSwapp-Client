@@ -12,7 +12,10 @@ class App.Models.Item extends Backbone.Model
 		else
 			response
 
-	addFavorite: =>
+
+
+	add_to_favorites: ->
 		$.post App.APIRoot+'/favorites/'+this.attributes.id+'?authToken='+App.swapper.attributes.auth_info.accessToken,{active:1}
-	removeFavorite: =>
+	
+	remove_from_favorites: =>
 		$.post App.APIRoot+'/favorites/'+this.attributes.id+'?authToken='+App.swapper.attributes.auth_info.accessToken,{active:0}
