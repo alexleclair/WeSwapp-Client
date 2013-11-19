@@ -8,18 +8,21 @@ class App.Views.User extends Backbone.View
 	
 	initialize: ->
 		@model.on "change", this.render, this
-		
+		App.swapper.on "change:info", this.render, this
+
 	
 	render: ->
+		
+
 		if @model.attributes.created_at?
 			_date = @model.attributes.created_at.split('-')
 			monthNames = ['','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 			@model.set {date: monthNames[parseInt(_date[1])]+'. '+_date[0]}
+			@model.set {is_me: @model.id == App.swapper.get("info").id} if App.swapper.get("info")?
 
 
-
-
+		console.log @model
 		this.$el.html @template(@model.attributes)
 
 		this.render_items()
