@@ -17,6 +17,8 @@ window.App =
 	
 	
 	init: ->
+		@wrapper = $("#app")
+
 		
 		@items = new App.Collections.Items()
 		@swapper = new App.Models.Swapper()
@@ -36,8 +38,6 @@ window.App =
 			model: @swapper
 
 		
-
-
 		@router = new App.Routers.Router()
 		
 		Backbone.history.start()

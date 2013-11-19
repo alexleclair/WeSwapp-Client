@@ -1,6 +1,4 @@
 class App.Views.Item extends Backbone.View
-
-	el: $("#app")
 	
 	template: Mustache.compile $("#source_templates_items_view").html()
 	
@@ -14,7 +12,9 @@ class App.Views.Item extends Backbone.View
 			@model.set {image: @model.get("medias")[0]} 
 			@model.set {date: new Date(@model.get("created_at")).toDateString()} 
 
+
 		console.log @model
 		this.$el.html @template(@model.attributes)
+		App.wrapper.html this.$el
 		
 		this

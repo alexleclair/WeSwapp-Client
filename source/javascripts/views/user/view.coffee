@@ -1,6 +1,5 @@
 class App.Views.User extends Backbone.View
 
-	el: $("#app")
 	
 	template: Mustache.compile $("#source_templates_users_view").html()
 	item_template: Mustache.compile $("#source_templates_items_index_item").html()
@@ -24,6 +23,8 @@ class App.Views.User extends Backbone.View
 
 		console.log @model
 		this.$el.html @template(@model.attributes)
+		App.wrapper.html this.$el
+
 
 		this.render_items()
 		

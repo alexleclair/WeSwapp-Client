@@ -1,7 +1,6 @@
 class App.Views.ItemSwap extends Backbone.View
 
-	el: $("#app")
-	
+
 	template: Mustache.compile $("#source_templates_items_swap").html()
 
 
@@ -31,11 +30,12 @@ class App.Views.ItemSwap extends Backbone.View
 		data.swapper_items = App.swapper.get("items")
 
 		this.$el.html @template(data)
+		App.wrapper.html this.$el
 		
 		this
 
 
-	swapp_item: (e)=>
+	swapp_item: (e)->
 		e.preventDefault();
 
 		$.post App.APIRoot + '/contacts/?authToken='+App.swapper.attributes.auth_info.accessToken, 
@@ -50,7 +50,15 @@ class App.Views.ItemSwap extends Backbone.View
             	trigger:true
 			
 
-		return false;
+
+
+
+
 	select_proposal: (e)->
 		$(".js-proposal").removeClass "proposal--selected"
 		$(e.currentTarget).addClass "proposal--selected"
+
+
+
+
+

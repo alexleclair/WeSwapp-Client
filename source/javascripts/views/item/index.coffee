@@ -1,7 +1,5 @@
 class App.Views.ItemIndex extends Backbone.View
 
-	el: $("#app")
-	
 
 	template: Mustache.compile $("#source_templates_items_index").html()
 	item_template: Mustache.compile $("#source_templates_items_index_item").html()
@@ -22,6 +20,7 @@ class App.Views.ItemIndex extends Backbone.View
 	
 	render: ->
 		this.$el.html @template
+		App.wrapper.html this.$el
 
 		@collection.fetch()
 		

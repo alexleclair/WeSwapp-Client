@@ -1,8 +1,5 @@
 
 
-
-
-
 class App.Routers.Router extends Backbone.Router
 
 
@@ -22,8 +19,18 @@ class App.Routers.Router extends Backbone.Router
 		
 
 	load_current_view: ->
-		App.menu_view.hide_menu()
+		if @previous_view?
+			@previous_view.remove()
+
+		@previous_view = @current_view
+
+
+
 		@current_view.render()
+
+
+		App.menu_view.hide_menu()
+
 
 
 	
