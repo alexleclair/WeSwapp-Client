@@ -1,0 +1,65 @@
+.item__bar {
+
+}
+
+	.item__bar__h2 {
+		text-align: center;
+	}
+
+
+.proposals {
+	background: $lightgray;
+}
+
+	.proposals__button {
+		font-size: 1.4em;
+
+		border-radius: 0;
+	}
+
+
+	.proposal {
+		cursor: pointer;
+		padding: 1em;
+
+
+		@include transition(background 0.3s);
+
+		&:hover {
+			background: $lightgray--dark;
+		}
+
+		&.proposal--selected {
+			background: $mint;
+		}
+
+		&.proposal--new {
+			color: $aqua;
+			text-align: center;
+		}
+	}
+
+		.proposal__image {
+			display: inline-block;
+			width: 30%;
+			vertical-align: middle;
+
+			margin-right: 1.5em;
+		}
+
+
+		.proposal__title {
+			display: inline-block;
+			vertical-align: middle;
+
+			font-size: 1.2em;
+			font-weight: 300;
+			text-transform: uppercase;
+
+
+			@include transition(color 0.3s);
+
+			.proposal--selected & {
+				color: white;
+			}
+		}

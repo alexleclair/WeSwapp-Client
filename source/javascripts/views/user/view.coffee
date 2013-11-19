@@ -12,8 +12,6 @@ class App.Views.User extends Backbone.View
 
 	
 	render: ->
-		console.log @model
-
 		if @model.attributes.created_at?
 			_date = @model.attributes.created_at.split('-')
 			monthNames = ['','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']

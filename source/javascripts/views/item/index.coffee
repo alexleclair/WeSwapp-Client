@@ -16,8 +16,6 @@ class App.Views.ItemIndex extends Backbone.View
 	
 	
 	initialize: ->
-		# console.log @collection
-
 		@collection.on "sync", this.render_items, this
 		@collection.on "remove", this.render_items, this
 
