@@ -17,14 +17,6 @@ class App.Collections.Items extends Backbone.Collection
 			user_url = '/users/'+user_id
 
 
-		token = options.token if options?
-		if token? && App.swapper.attributes.auth_info? && App.swapper.attributes.auth_info.accessToken?
-			token = App.swapper.attributes.auth_info.accessToken
-			token = '?authToken='+token
-
-		else
-			token = ''
-
 
 
 		path = "/items"
@@ -32,7 +24,7 @@ class App.Collections.Items extends Backbone.Collection
 			path = "/favorites/"
 
 		
-		$.get @url+user_url+path+token, (response)->
+		$.get @url+user_url+path, (response)->
 			_this.reset _this.parse(response)
 			_this.trigger('sync')
 

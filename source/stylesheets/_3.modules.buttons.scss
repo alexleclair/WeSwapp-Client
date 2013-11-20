@@ -36,6 +36,10 @@
 		width: 100%;
 	}
 
+	.button--half {
+		width: 50%;
+	}
+
 	.button--icon {
 		padding: 1em;
 
@@ -68,6 +72,25 @@
 		&:hover {
 			@include gradient;	
 			-webkit-animation: hue 5s infinite;
+		}
+	}
+
+
+	.button--refuse {
+		background: $grapefruit;
+
+
+		&:hover {
+			background: $grapefruit--dark;
+		}
+	}
+
+	.button--accept {
+		background: $grass;
+
+
+		&:hover {
+			background: $grass--dark;
 		}
 	}
 

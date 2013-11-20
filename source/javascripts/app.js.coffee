@@ -20,6 +20,7 @@ window.App =
 	
 	
 	init: ->
+
 		@wrapper = $("#app")
 
 		
@@ -49,6 +50,7 @@ window.App =
 		
 
 $ ->
+
 	if $('body').hasClass 'landing'
 		$('.slides').cycle({
 			speed: 800,

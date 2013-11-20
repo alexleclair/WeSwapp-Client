@@ -85,10 +85,16 @@ class App.Views.ItemNew extends Backbone.View
 		jsonBody = 
 			title:$form.find('[name="title"]').val()
 			description:$form.find('[name="description"]').val()
-			media:@imageData;
-		$.post @url+'?authToken='+App.swapper.attributes.auth_info.accessToken, jsonBody, (data)->
+			media: @imageData
+
+
+		$.post @url, jsonBody, (data)->
 			if data.code != 200
 				alert data.error
 			else
 				App.router.navigate '/items/' + data.response.id, 
 					trigger:true
+
+
+
+					

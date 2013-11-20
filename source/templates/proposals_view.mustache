@@ -1,0 +1,96 @@
+
+
+<section class="grid">
+	<hgroup class="col span21">
+		<h1 class="item__bar__h1 proposal__h1 thin">
+			{{#is_initiator}}
+				You asked <strong>{{them.firstname}}</strong> to trade {{gender_word}} <strong>{{their_item.title}}</strong> for your <strong>{{your_item.title}}</strong>
+			{{/is_initiator}}
+			{{^is_initiator}}
+				<strong>{{them.firstname}}</strong> wants to swapp your <strong>{{your_item.title}}</strong> for {{gender_word}} <strong>{{their_item.title}}</strong>
+			{{/is_initiator}}
+		</h1>
+	</hgroup>
+
+
+	{{#their_item}}
+	<div class="col span6 mobile--span12">
+		<div class="item__images">
+			<a href="/items/{{id}}" class="item__image__link">
+				<div style="background-image:url('{{image}}')" class="item__image"></div>
+				<div class="item__image__highlight"><span class="item__image__highlight__plus"></span></div>
+			</a>
+			<a href="/users/{{them.id}}" class="item__owner_link"><img src="{{#them.fb_uid}}https://graph.facebook.com/{{them.fb_uid}}/picture?width=200&height=200{{/them.fb_uid}}" class="item__owner_image"></a>
+		</div>
+
+		<a href="/items/{{id}}"><h2 class="item__title">{{title}}</h2></a>
+	</div>
+	{{/their_item}}
+
+
+
+	{{#your_item}}
+	<div class="col span6 mobile--span12">
+		<div class="item__images">
+			<a href="/items/{{id}}" class="item__image__link">
+				<div style="background-image:url('{{image}}')" class="item__image"></div>
+				<div class="item__image__highlight"><span class="item__image__highlight__plus"></span></div>
+			</a>
+			<a href="/users/{{you.id}}" class="item__owner_link"><img src="{{#you.fb_uid}}https://graph.facebook.com/{{you.fb_uid}}/picture?width=200&height=200{{/you.fb_uid}}" class="item__owner_image"></a>
+		</div>
+		
+		<a href="/items/{{id}}"><h2 class="item__title">{{title}}</h2></a>
+	</div>
+	{{/your_item}}
+
+
+
+	<div class="col span12 proposal__buttons">
+		{{^is_initiator}}
+			{{#is_pending}}
+			<a href="#" id="proposal__refuse_button" class="button button--half button--icon no-right button--refuse">Refuse</a><!--
+		--><a href="#" id="proposal__accept_button" class="button button--half button--icon no-left button--accept">Accept</a>
+			{{/is_pending}}
+
+
+			{{#is_accepted}}
+			<div class="alert">
+				You accepted <strong>{{them.firstname}}</strong>'s offer to swapp your <strong>{{your_item.title}}</strong> for {{gender_word}} <strong>{{their_item.title}}</strong>
+			</div>
+			{{/is_accepted}}
+
+			{{#is_rejected}}
+			<div class="alert">
+				You refused <strong>{{them.firstname}}</strong>'s offer to swapp your <strong>{{your_item.title}}</strong> for {{gender_word}} <strong>{{their_item.title}}</strong>
+			</div>
+			{{/is_rejected}}
+		{{/is_initiator}}
+
+		{{#is_initiator}}
+			{{#is_pending}}
+			<div class="alert">
+				Please wait for {{gender_word}} response
+			</div>
+			{{/is_pending}}
+
+
+			{{#is_accepted}}
+			<div class="alert">
+				<strong>{{them.firstname}}</strong> accepted to trade {{gender_word}} <strong>{{their_item.title}}</strong> for your <strong>{{your_item.title}}</strong>
+			</div>
+			{{/is_accepted}}
+
+
+			{{#is_rejected}}
+			<div class="alert">
+				<strong>{{them.firstname}}</strong> refused to trade {{gender_word}} <strong>{{their_item.title}}</strong> for your <strong>{{your_item.title}}</strong>
+			</div>
+			{{/is_rejected}}
+
+		{{/is_initiator}}
+	</div>
+
+	
+	
+
+</section>

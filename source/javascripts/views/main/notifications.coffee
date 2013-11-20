@@ -9,8 +9,7 @@ class App.Views.Notifications extends Backbone.View
 	
 	
 	events: {
-		"click #app__nav__link--facebook": "facebook_login"
-		"click #app__nav__link--logout": "facebook_logout"
+
 	}
 	
 	
@@ -42,6 +41,7 @@ class App.Views.Notifications extends Backbone.View
 		$count.text(count)
 		
 		this
+
 
 
 	render_notifications: ->
@@ -100,18 +100,10 @@ class App.Views.Notifications extends Backbone.View
 			_this.add_notification item
 
 
+
+
 	add_notification: (item)->
 		$item = $(@notifications_template(item));
-		$item.find('a.btn-accept').on 'click', (e)->
-			e.preventDefault();
-			$.post App.APIRoot + '/contacts/'+$item.attr('data-contact-id')+'?authToken='+App.swapper.attributes.auth_info.accessToken, {status:'accepted'}
-			$item.slideUp('fast');
-			return false;
-		$item.find('a.btn-reject').on 'click', (e)->
-			e.preventDefault();
-			$.post App.APIRoot + '/contacts/'+$item.attr('data-contact-id')+'?authToken='+App.swapper.attributes.auth_info.accessToken, {status:'rejected'}
-			$item.slideUp('fast');
-			return false;
 		this.$el.append $item;
 
 
@@ -126,19 +118,9 @@ class App.Views.Notifications extends Backbone.View
 	hide_menu: (e)->
 		e.stopImmediatePropagation() if e?
 
-		$("#app__header__btn--menu").removeClass "app__header__btn--active"
+		$("#app__header__btn--notifications").removeClass "app__header__btn--active"
 		$("#app__notifications").removeClass "app__nav--active"
 
-
-	facebook_login: (e)->
-		e.preventDefault()
-
-		App.swapper.facebook_login()
-
-	facebook_logout: (e)->
-		e.preventDefault()
-
-		App.swapper.facebook_logout()
 
 
 	

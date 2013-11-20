@@ -9,6 +9,7 @@ class App.Routers.Router extends Backbone.Router
 		'items/:id':'items'
 		'items/:id/swap':'item_swap'
 		'users/:id':'users'
+		'proposals/:id':'proposals'
 		'favorites':'favorites'
 	}
 			
@@ -31,6 +32,7 @@ class App.Routers.Router extends Backbone.Router
 
 
 		App.menu_view.hide_menu()
+		App.notifications_view.hide_menu()
 
 
 
@@ -76,27 +78,28 @@ class App.Routers.Router extends Backbone.Router
 
 
 	item_swap: (id)->
-		item = App.items.get(id)
+		if this.check_auth_info()
+			item = App.items.get(id)
 
 
-		if item?
-			@current_view = new App.Views.ItemSwap
-				item: App.items.get id
-				swapper: App.swapper
+			if item?
+				@current_view = new App.Views.ItemSwap
+					item: App.items.get id
+					swapper: App.swapper
 
 
-		else
-			item = new App.Models.Item {id: id}
-			item.fetch()
+			else
+				item = new App.Models.Item {id: id}
+				item.fetch()
 
-			App.items.add item
+				App.items.add item
 
-			@current_view = new App.Views.ItemSwap
-				item: item
-				swapper: App.swapper
+				@current_view = new App.Views.ItemSwap
+					item: item
+					swapper: App.swapper
 
 
-		this.load_current_view()
+			this.load_current_view()
 
 
 
@@ -124,12 +127,40 @@ class App.Routers.Router extends Backbone.Router
 
 
 
-	favorites: ->
-		@current_view = new App.Views.ItemIndex
-			collection: App.favorites
+	proposals: (id)->
+		if this.check_auth_info()
+			proposal = new App.Models.Proposal {id: id}
+			
 
-		
-		this.load_current_view()
+			@current_view = new App.Views.Proposal
+				model: proposal
+
+
+			proposal.fetch()
+			this.load_current_view()
+
+
+
+	favorites: ->
+		if this.check_auth_info()
+			@current_view = new App.Views.ItemIndex
+				collection: App.favorites
+
+			
+			this.load_current_view()
+
+
+
+
+	check_auth_info: ->
+		if App.swapper.get("auth_info")?
+			true
+
+		else
+			this.navigate "",
+				trigger: true
+
+			false
 
 
 

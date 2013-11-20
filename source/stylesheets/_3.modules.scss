@@ -120,7 +120,7 @@
 
 
 
-			-webkit-animation: hue 5s infinite;
+			
 
 
 			@include transition(opacity 0.3s);
@@ -134,6 +134,7 @@
 
 			&:hover {
 				opacity: 0.6;
+				-webkit-animation: hue 5s infinite;
 			}
 		}
 
