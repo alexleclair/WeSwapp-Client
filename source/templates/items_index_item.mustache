@@ -1,13 +1,13 @@
 
 
-<article class="col span4 mobile--span12 item">
+<article class="col span4 tablet--span6 mobile--span12 item">
 	<div class="item__images">
-		<a href="#"><i class="item__star swapp-star {{#favorited}}active{{/favorited}}"></i></a>
+		<i class="item__star swapp-star{{#favorited}} item__star--active{{/favorited}}" data-id="{{id}}"></i>
 		<a href="/items/{{id}}" class="item__image__link">
 			<div style="background-image:url('{{image}}')" class="item__image"></div>
 			<div class="item__image__highlight"><span class="item__image__highlight__plus"></span></div>
 		</a>
-		<a href="/users/{{user.id}}" class="item__owner_link"><img src="https://graph.facebook.com/{{user.fb_uid}}/picture?width=200&height=200" class="item__owner_image"></a>
+		<a href="/users/{{user.id}}" class="item__owner_link"><img src="{{#user.fb_uid}}https://graph.facebook.com/{{user.fb_uid}}/picture?width=200&height=200{{/user.fb_uid}}" class="item__owner_image"></a>
 	</div>
-	<a href="/items/1"><h2 class="item__title">{{title}}</h2></a>
+	<a href="/items/{{id}}"><h2 class="item__title">{{title}}</h2></a>
 </article>

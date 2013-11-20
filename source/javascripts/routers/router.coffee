@@ -1,8 +1,5 @@
 
 
-
-
-
 class App.Routers.Router extends Backbone.Router
 
 
@@ -12,6 +9,8 @@ class App.Routers.Router extends Backbone.Router
 		'items/:id':'items'
 		'items/:id/swap':'item_swap'
 		'users/:id':'users'
+		'proposals/:id':'proposals'
+		'favorites':'favorites'
 	}
 			
 		
@@ -22,8 +21,19 @@ class App.Routers.Router extends Backbone.Router
 		
 
 	load_current_view: ->
-		App.menu_view.hide_menu()
+		if @previous_view?
+			@previous_view.remove()
+
+		@previous_view = @current_view
+
+
+
 		@current_view.render()
+
+
+		App.menu_view.hide_menu()
+		App.notifications_view.hide_menu()
+
 
 
 	
@@ -38,61 +48,58 @@ class App.Routers.Router extends Backbone.Router
 
 
 	items: (id)->
-		if id == 'favorites'
-			@current_view = new App.Views.ItemIndex
-				collection: App.favorites
-			@current_view.render();
-			App.favorites.trigger('sync');
-			return;
 		if id == 'new'
-			@current_view = new App.Views.ItemNew();
-			@current_view.render();
-			return;
-		item = App.items.get(id)
-
-
-		if item?
-			@current_view = new App.Views.Item
-				model: App.items.get id
-
+			@current_view = new App.Views.ItemNew()
+			
 			this.load_current_view()
+
 
 		else
-			item = new App.Models.Item {id: id}
-			item.fetch()
+			item = App.items.get(id)
 
-			App.items.add item
 
-			@current_view = new App.Views.Item
-				model: item
+			if item?
+				@current_view = new App.Views.Item
+					model: App.items.get id
 
-			this.load_current_view()
+				this.load_current_view()
+
+			else
+				item = new App.Models.Item {id: id}
+				item.fetch()
+
+				App.items.add item
+
+				@current_view = new App.Views.Item
+					model: item
+
+				this.load_current_view()
+
 
 
 	item_swap: (id)->
-		item = App.items.get(id)
+		if this.check_auth_info()
+			item = App.items.get(id)
 
 
-		if item?
-			@current_view = new App.Views.ItemSwap
-				item: App.items.get id
-				swapper: App.swapper
+			if item?
+				@current_view = new App.Views.ItemSwap
+					item: App.items.get id
+					swapper: App.swapper
 
 
-		else
-			item = new App.Models.Item {id: id}
-			item.fetch()
+			else
+				item = new App.Models.Item {id: id}
+				item.fetch()
 
-			App.items.add item
+				App.items.add item
 
-			@current_view = new App.Views.ItemSwap
-				item: item
-				swapper: App.swapper
+				@current_view = new App.Views.ItemSwap
+					item: item
+					swapper: App.swapper
 
 
-		App.swapper.get_items()
-
-		this.load_current_view()
+			this.load_current_view()
 
 
 
@@ -117,6 +124,44 @@ class App.Routers.Router extends Backbone.Router
 				model: user
 
 			this.load_current_view()
+
+
+
+	proposals: (id)->
+		if this.check_auth_info()
+			proposal = new App.Models.Proposal {id: id}
+			
+
+			@current_view = new App.Views.Proposal
+				model: proposal
+
+
+			proposal.fetch()
+			this.load_current_view()
+
+
+
+	favorites: ->
+		if this.check_auth_info()
+			@current_view = new App.Views.ItemIndex
+				collection: App.favorites
+
+			
+			this.load_current_view()
+
+
+
+
+	check_auth_info: ->
+		if App.swapper.get("auth_info")?
+			true
+
+		else
+			this.navigate "",
+				trigger: true
+
+			false
+
 
 
 

@@ -6,7 +6,7 @@
 		<h1 class="item__bar__h1">Propose a Swapp <span class="thin">for this item:</span></h1>
 
 		<div class="header__image header__image--item" style="background-image:url('{{image}}')">
-			<a href="/users/{{user.id}}" class="item__owner_link"><img src="https://graph.facebook.com/{{user.fb_uid}}/picture?width=200&height=200" class="item__owner_image"></a>
+			<a href="/users/{{user.id}}" class="item__owner_link">{{#user.fb_uid}}<img src="https://graph.facebook.com/{{user.fb_uid}}/picture?width=200&height=200" class="item__owner_image">{{/user.fb_uid}}</a>
 		</div>
 		<h2 class="item__bar__h2">{{title}}</h2>
 	</div>

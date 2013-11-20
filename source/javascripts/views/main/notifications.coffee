@@ -9,8 +9,7 @@ class App.Views.Notifications extends Backbone.View
 	
 	
 	events: {
-		"click #app__nav__link--facebook": "facebook_login"
-		"click #app__nav__link--logout": "facebook_logout"
+
 	}
 	
 	
@@ -44,6 +43,7 @@ class App.Views.Notifications extends Backbone.View
 		this
 
 
+
 	render_notifications: ->
 		_this = this
 
@@ -51,39 +51,45 @@ class App.Views.Notifications extends Backbone.View
 		this.$el.html ""
 
 		_.each @model.attributes.notifications.contacts, (item)->
-			classes = []
-			user = {}
-			if item.is_seen
-				classes.push('seen');
-			if item.isReceived
-				classes.push('received');
-			if item.isSent
-				classes.push('sent');
 
-			item.classes = classes.join(' ');
-			item.user = user;
+			classes = []
+			if item.is_seen
+				classes.push('seen')
+			if item.isReceived
+				classes.push('received')
+			if item.isSent
+				classes.push('sent')
+
+			item.classes = classes.join(' ')
+
 			if App.swapper.attributes.info? and item.item_initiator.user_id == App.swapper.attributes.info.id
-				item.is_initiator = true;
-				item.you = item.user_initiator;
-				item.them = item.item_requested.user;
-				item.their_item = item.item_requested;
-				item.your_item = item.item_initiator;
+				item.is_initiator = true
+				item.you = item.user_initiator
+				item.them = item.item_requested.user
+				item.their_item = item.item_requested
+				item.your_item = item.item_initiator
 			else
 				item.is_initiator = false;
-				item.them = item.user_initiator;
-				item.you = item.item_requested.user;
-				item.your_item = item.item_requested;
-				item.their_item = item.item_initiator;
+				item.them = item.user_initiator
+				item.you = item.item_requested.user
+				item.your_item = item.item_requested
+				item.their_item = item.item_initiator
 
-			item.is_pending = false;
-			item.is_accepted = false;
-			item.is_rejected = false;
+
+			item.your_item.image = item.your_item.medias[0]
+			item.their_item.image = item.their_item.medias[0]
+
+
+
+			item.is_pending = false
+			item.is_accepted = false
+			item.is_rejected = false
 			if item.status == 'pending'
-				item.is_pending = true;
+				item.is_pending = true
 			if item.status == 'accepted'
-				item.is_accepted = true;
+				item.is_accepted = true
 			if item.status == 'rejected'
-				item.is_rejected = true;
+				item.is_rejected = true
 
 			item.gender_word = 'their';
 			if item.them.gender == 'male'
@@ -94,18 +100,10 @@ class App.Views.Notifications extends Backbone.View
 			_this.add_notification item
 
 
+
+
 	add_notification: (item)->
 		$item = $(@notifications_template(item));
-		$item.find('a.btn-accept').on 'click', (e)->
-			e.preventDefault();
-			$.post App.APIRoot + '/contacts/'+$item.attr('data-contact-id')+'?authToken='+App.swapper.attributes.auth_info.accessToken, {status:'accepted'}
-			$item.slideUp('fast');
-			return false;
-		$item.find('a.btn-reject').on 'click', (e)->
-			e.preventDefault();
-			$.post App.APIRoot + '/contacts/'+$item.attr('data-contact-id')+'?authToken='+App.swapper.attributes.auth_info.accessToken, {status:'rejected'}
-			$item.slideUp('fast');
-			return false;
 		this.$el.append $item;
 
 
@@ -120,19 +118,9 @@ class App.Views.Notifications extends Backbone.View
 	hide_menu: (e)->
 		e.stopImmediatePropagation() if e?
 
-		$("#app__header__btn--menu").removeClass "app__header__btn--active"
+		$("#app__header__btn--notifications").removeClass "app__header__btn--active"
 		$("#app__notifications").removeClass "app__nav--active"
 
-
-	facebook_login: (e)->
-		e.preventDefault()
-
-		App.swapper.facebook_login()
-
-	facebook_logout: (e)->
-		e.preventDefault()
-
-		App.swapper.facebook_logout()
 
 
 	

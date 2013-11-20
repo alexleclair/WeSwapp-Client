@@ -3,7 +3,7 @@
 <section class="grid">
 	<header class="item__header col span6 mobile--span12">
 		<div class="header__image header__image--item" style="background-image:url('{{image}}')">
-			<a href="/users/{{user.id}}" class="item__owner_link"><img src="https://graph.facebook.com/{{user.fb_uid}}/picture?width=200&height=200" class="item__owner_image"></a>
+			<a href="/users/{{user.id}}" class="item__owner_link"><img src="{{#user.fb_uid}}https://graph.facebook.com/{{user.fb_uid}}/picture?width=200&height=200{{/user.fb_uid}}" class="item__owner_image"></a>
 		</div>
 
 		<h1 class="item__header__h1">{{title}} <span class="thin item__header__condition">&ndash; {{condition}}</span></h1>
@@ -11,8 +11,18 @@
 	</header>
 
 	<div class="item__meta col span6 mobile--span12">
+		
 		<p class="item__description"><strong>Description:</strong> {{description}}</p>
-		<a href="/items/{{id}}/swap" class="button button--full button--icon"><i class="swapp-star"></i> Add to Favorites</a>
-		<a href="/items/{{id}}/swap" class="button button--full button--icon button--swapp"><i class="swapp-logo"></i> Propose a Swapp</a>
+		{{#user_id}}
+		{{^is_mine}}
+		{{^favorited}}<a href="#" class="button no-bottom button--full button--icon" id="button--star"><i class="swapp-star"></i> Add to Favorites</a>{{/favorited}}
+		{{#favorited}}<div class="alert no-bottom">This item is a favorite of yours</div>{{/favorited}}
+		<a href="/items/{{id}}/swap" class="button no-top button--full button--icon button--swapp"><i class="swapp-logo"></i> Propose a Swapp</a>
+		{{/is_mine}}
+		{{/user_id}}
+		{{#is_mine}}
+		<div class="alert no-bottom">This item belongs to you</div>
+		<a href="/" class="button no-top button--full button--icon button--swapp"><i class="swapp-logo"></i> Browse more Swapps</a>
+		{{/is_mine}}
 	</div>
 </section>

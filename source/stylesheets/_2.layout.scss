@@ -13,7 +13,7 @@
 body {
 	max-width: 60em;
 	min-width: 20em;
-	padding: 8em 0 2em 4em;
+	padding: 8em 0 6em 3.5em;
 	margin: 0 auto;
 }
 
@@ -80,7 +80,8 @@ img {
 	left: 0;
 	z-index: 199;
 
-	width: 18em;
+	width: 100%;
+	max-width: 18em;
 }
 
 .app__notifications {
@@ -89,7 +90,8 @@ img {
 	right: 0;
 	z-index: 199;
 
-	width: 22em;
+	width: 100%;
+	max-width: 22em;
 }
 
 

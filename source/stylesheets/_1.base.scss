@@ -32,6 +32,10 @@ $sunflower: #ffce54;
 $sunflower--dark: #f6bb42;
 $sunflower--darker: darken(#f6bb42, 5%);
 
+$grapefruit: #ed5565;
+$grapefruit--dark: #da4453;
+$grapefruit--darker: darken(#da4453, 5%);
+
 
 /* Fonts */
 $header_font: "Raleway", sans-serif;
@@ -65,6 +69,34 @@ h1, h2, h3, h4, h5, h6, input {
 a {
 	color: $aqua;
 	text-decoration: none;
+}
+
+
+
+.hide {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+
+.no-top {
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+}
+
+.no-right {
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+
+.no-bottom {
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+
+.no-left {
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
 }
 
 

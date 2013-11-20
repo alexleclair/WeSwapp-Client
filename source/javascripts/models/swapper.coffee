@@ -20,19 +20,27 @@ class App.Models.Swapper extends Backbone.Model
 		_this.set {auth_info: info.authResponse}
 
 		if info.authResponse?
-			authToken = info.authResponse.accessToken;
-			$.get @urlRoot+"?authToken="+authToken, (response)->
-				info = response.response				
+			authToken = info.authResponse.accessToken
 
+
+			$.ajaxSetup
+				data:
+					authToken: authToken
+
+
+
+			$.get @urlRoot, (response)->
+				info = response.response
 				_this.set {info}
-				App.favorites.fetch authToken
-
-			$.get App.APIRoot + '/contacts/?authToken='+authToken, (response)->
-				_this.set {notifications:response.response}
-			
-
+				
 
 				_this.get_items()
+				App.favorites.fetch {favorites: true}	
+				
+
+			$.get App.APIRoot + '/contacts/', (response)->
+				_this.set {notifications:response.response}
+				
 
 				App.notifications_view.render()
 
@@ -43,7 +51,7 @@ class App.Models.Swapper extends Backbone.Model
 	get_items: (callback)->
 		_this = this
 
-		$.get @urlRoot+"/items?authToken="+_this.get("auth_info").accessToken, (response)->
+		$.get @urlRoot+"/items", (response)->
 			items = response.response
 
 			_.each items, (item)->

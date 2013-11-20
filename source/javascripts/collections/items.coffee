@@ -3,23 +3,34 @@
 class App.Collections.Items extends Backbone.Collection
 	
 	model: App.Models.Item
-	
-	
-	url: App.APIRoot + "/items"
 
-	fetch:(token)=>
-		if !token? && App.swapper.attributes.auth_info? && App.swapper.attributes.auth_info.accessToken?
-			token = App.swapper.attributes.auth_info.accessToken;
 
-		if !token?
-			token = '';
-		else
-			token = '?authToken='+token
+	url: App.APIRoot
+
+	fetch: (options)->
+		
 		_this = this
-		$.get @url+token, (response)->
-			_this.reset();
-			_this.set _this.parse(response)
+
+		user_id = options.user_id if options?
+		user_url = ''
+		if user_id?
+			user_url = '/users/'+user_id
+
+
+
+
+		path = "/items"
+		if options? and options.favorites?
+			path = "/favorites/"
+
+		
+		$.get @url+user_url+path, (response)->
+			_this.reset _this.parse(response)
 			_this.trigger('sync')
+
+
+
+
 
 	parse: (response)->
 		response.response

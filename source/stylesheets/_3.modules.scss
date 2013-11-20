@@ -4,10 +4,22 @@
 @import "_3.modules.landing";
 @import "_3.modules.menu";
 @import "_3.modules.profile";
+@import "_3.modules.proposals";
 
 
 
 
+
+.alert {
+	@extend .button;
+
+	width: 100%;
+	background: $lightgray;
+
+	&:hover {
+		background: $lightgray--dark;
+	}
+}
 
 
 
@@ -39,6 +51,8 @@
 
 
 	.item__star {
+		cursor: pointer;
+
 		position: absolute;
 		top: -0.2em;
 		left: -0.2em;
@@ -51,7 +65,7 @@
 
 		@include transition(color 0.3s);
 
-		&:hover,&.active {
+		&:hover,&.item__star--active {
 			color: $sunflower;
 		}
 	}
@@ -70,7 +84,6 @@
 
 
 		.item__image {
-			display: block;
 			background-size: cover;
 
 			overflow: hidden;
@@ -107,7 +120,7 @@
 
 
 
-			-webkit-animation: hue 5s infinite;
+			
 
 
 			@include transition(opacity 0.3s);
@@ -121,6 +134,7 @@
 
 			&:hover {
 				opacity: 0.6;
+				-webkit-animation: hue 5s infinite;
 			}
 		}
 
@@ -228,7 +242,8 @@
 		border: 0.5em solid white;
 		border-radius: 50%;			
 
-		width: 10em;
+		width: 100%;
+		max-width: 10em;
 		margin: 0 auto 1em;
 
 
@@ -243,7 +258,7 @@
 		}
 
 		&.header__image--item {
-			width: 18em;
+			max-width: 18em;
 
 			margin: 0 auto 2em;
 		}
@@ -285,20 +300,6 @@
 		vertical-align: bottom;
 
 		margin-bottom: 2.5em;
-
-		.button {
-
-
-			&:first-of-type {
-				border-bottom-left-radius: 0; 
-				border-bottom-right-radius: 0; 
-			}
-			
-			&:last-child {
-				border-top-left-radius: 0; 
-				border-top-right-radius: 0; 
-			}
-		}
 	}
 
 		.item__description {
@@ -306,71 +307,7 @@
 		}
 
 
-.item__bar {
 
-}
-
-	.item__bar__h2 {
-		text-align: center;
-	}
-
-
-.proposals {
-	background: $lightgray;
-}
-
-	.proposals__button {
-		font-size: 1.4em;
-
-		border-radius: 0;
-	}
-
-
-	.proposal {
-		cursor: pointer;
-		padding: 1em;
-
-
-		@include transition(background 0.3s);
-
-		&:hover {
-			background: $lightgray--dark;
-		}
-
-		&.proposal--selected {
-			background: $mint;
-		}
-
-		&.proposal--new {
-			color: $aqua;
-			text-align: center;
-		}
-	}
-
-		.proposal__image {
-			display: inline-block;
-			width: 30%;
-			vertical-align: middle;
-
-			margin-right: 1.5em;
-		}
-
-
-		.proposal__title {
-			display: inline-block;
-			vertical-align: middle;
-
-			font-size: 1.2em;
-			font-weight: 300;
-			text-transform: uppercase;
-
-
-			@include transition(color 0.3s);
-
-			.proposal--selected & {
-				color: white;
-			}
-		}
 
 
 #item-new-form {

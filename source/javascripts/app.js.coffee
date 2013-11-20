@@ -12,17 +12,23 @@ window.App =
 	Collections: {}
 	Views: {}
 	Routers: {}
+
+
+	
 	APIRoot: 'https://www.weswapp.com/api'
 	
 	
 	
 	init: ->
+
+		@wrapper = $("#app")
+
 		
 		@items = new App.Collections.Items()
 		@swapper = new App.Models.Swapper()
 		@users = new App.Collections.Users()
 		@notifications = new App.Collections.Notifications()
-		@favorites = new App.Collections.Favorites()
+		@favorites = new App.Collections.Items()
 
 
 
@@ -36,8 +42,6 @@ window.App =
 			model: @swapper
 
 		
-
-
 		@router = new App.Routers.Router()
 		
 		Backbone.history.start()
@@ -46,6 +50,7 @@ window.App =
 		
 
 $ ->
+
 	if $('body').hasClass 'landing'
 		$('.slides').cycle({
 			speed: 800,
