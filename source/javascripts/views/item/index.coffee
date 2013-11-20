@@ -18,6 +18,7 @@ class App.Views.ItemIndex extends Backbone.View
 	initialize: ->
 		@collection.on "sync", this.render_items, this
 		@collection.on "remove", this.render_items, this
+		App.favorites.on "sync", this.render_items, this
 
 
 	
@@ -45,8 +46,12 @@ class App.Views.ItemIndex extends Backbone.View
 		this.$el.find("#items").html ""
 
 
+		console.log App.favorites
+
 		@collection.each (item)->
 			item.set {image: item.get("medias")[0]} unless item.has("image")
+			item.set {favorited: true} if App.favorites.get(item.id)?
+
 			_this.add_item item
 
 
@@ -65,6 +70,8 @@ class App.Views.ItemIndex extends Backbone.View
 		star = $(e.currentTarget)
 
 		item = @collection.get(star.attr('data-id'))
+
+		console.log item
 
 		if star.is('.item__star--active')
 			item.remove_from_favorites()
