@@ -16,8 +16,10 @@ class App.Views.Item extends Backbone.View
 				date: new Date(@model.get("created_at")).toDateString()
 				
 
-
 		@model.set {is_mine: @model.get("user_id")==App.swapper.get("info").id} if App.swapper.get("info")?
+		@model.set {favorited: true} if App.favorites.get(@model.id)??
+
+		console.log @model
 
 
 		this.$el.html @template(@model.attributes)

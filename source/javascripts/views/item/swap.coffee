@@ -27,7 +27,9 @@ class App.Views.ItemSwap extends Backbone.View
 
 		data = {}
 		data.item = @item.attributes
-		data.swapper_items = App.swapper.get("items")
+		data.swapper_items = App.swapper.get("items") if App.swapper.has("items")
+
+		console.log data
 
 		this.$el.html @template(data)
 		App.wrapper.html this.$el
@@ -36,7 +38,7 @@ class App.Views.ItemSwap extends Backbone.View
 
 
 	swapp_item: (e)->
-		e.preventDefault();
+		e.preventDefault()
 
 		$.post App.APIRoot + '/contacts/?authToken='+App.swapper.attributes.auth_info.accessToken, 
 			requested_item_id:@item.attributes.id
@@ -55,6 +57,8 @@ class App.Views.ItemSwap extends Backbone.View
 
 
 	select_proposal: (e)->
+		console.log e
+
 		$(".js-proposal").removeClass "proposal--selected"
 		$(e.currentTarget).addClass "proposal--selected"
 

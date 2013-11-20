@@ -14,7 +14,6 @@ window.App =
 	Routers: {}
 
 
-
 	
 	APIRoot: 'https://www.weswapp.com/api'
 	

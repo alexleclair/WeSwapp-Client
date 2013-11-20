@@ -46,7 +46,6 @@ class App.Views.ItemIndex extends Backbone.View
 		this.$el.find("#items").html ""
 
 
-		console.log App.favorites
 
 		@collection.each (item)->
 			item.set {image: item.get("medias")[0]} unless item.has("image")
@@ -71,7 +70,6 @@ class App.Views.ItemIndex extends Backbone.View
 
 		item = @collection.get(star.attr('data-id'))
 
-		console.log item
 
 		if star.is('.item__star--active')
 			item.remove_from_favorites()

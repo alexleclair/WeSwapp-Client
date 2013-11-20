@@ -15,10 +15,40 @@ class App.Views.ItemNew extends Backbone.View
 		_this = this
 
 
-		imageLoader = document.getElementById 'imageLoader' ;
-		imageLoader.addEventListener 'change', _this.handleImage, false;
-		canvas = document.getElementById 'imageCanvas';
-		ctx = canvas.getContext '2d';
+		handleImage = (e)->
+			file = imageLoader.files[0]
+			mpImg = new MegaPixImage(file)
+			resImg = new Image();
+			mpImg.render(resImg, { maxWidth: 1000, maxHeight: 1000, quality: 0.8 });
+
+			resCanvas1 = document.createElement("canvas");
+			mpImg.render(resCanvas1, { maxWidth: 1000, maxHeight: 1000 });
+			resCanvas2 = document.createElement("canvas");
+			
+			if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)))
+				mpImg.render(resCanvas2, { maxWidth: 1000, maxHeight: 1000, orientation: 6})
+
+			else
+				mpImg.render(resCanvas2, { maxWidth: 1000, maxHeight: 1000})
+
+
+			setTimeout ->
+				canvas.width=1000
+				canvas.height=1000
+				ctx.drawImage(resCanvas2,0,0);
+
+				_this.imageData = resCanvas2.toDataURL 'image/jpeg';
+			, 600
+
+
+
+
+		imageLoader = document.getElementById 'imageLoader'
+		imageLoader.addEventListener 'change', handleImage, false
+		canvas = document.getElementById 'imageCanvas'
+		ctx = canvas.getContext '2d'
+
+
 
 		$(@el).find('a.upload-field').click (e)->
 			e.preventDefault();
@@ -28,40 +58,25 @@ class App.Views.ItemNew extends Backbone.View
 			e.preventDefault();
 			$form = $('#item-new-form');
 			if !_this.imageData?
-				alert 'No image data'
+				alert 'Please enter submit and image'
 				return false;
 			if $form.find('[name="title"]').val() == ''
-				alert 'Put a title'
+				alert 'Please enter a title'
 				return false;
 			if $form.find('[name="description"]').val() == ''
-				alert 'Put a description'
+				alert 'Please enter a description'
 				return false;
 			_this.submit.call(_this);
 			return false;
 
+
+
+		
+
+
 		this
 
-
-
-	handleImage: (e)->
-
-		file = imageLoader.files[0];
-		mpImg = new MegaPixImage(file)
-		resImg = new Image();
-		mpImg.render(resImg, { maxWidth: 1000, maxHeight: 1000, quality: 0.8 });
-
-		resCanvas1 = document.createElement("canvas");
-		mpImg.render(resCanvas1, { maxWidth: 1000, maxHeight: 1000 });
-		resCanvas2 = document.createElement("canvas");
-		mpImg.render(resCanvas2, { maxWidth: 1000, maxHeight: 1000, orientation: 6 });
-
-		setTimeout ->
-			canvas.width=1000
-			canvas.height=1000
-			ctx.drawImage(resCanvas2,0,0);
-
-			_this.imageData = resCanvas2.toDataURL 'image/jpeg';
-		, 600
+		
 
 
 

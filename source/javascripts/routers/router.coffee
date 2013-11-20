@@ -96,8 +96,6 @@ class App.Routers.Router extends Backbone.Router
 				swapper: App.swapper
 
 
-		App.swapper.get_items()
-
 		this.load_current_view()
 
 

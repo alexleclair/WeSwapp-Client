@@ -15,7 +15,8 @@
 		<p class="item__description"><strong>Description:</strong> {{description}}</p>
 		{{#user_id}}
 		{{^is_mine}}
-		<a href="#" class="button no-bottom button--full button--icon" id="button--star"><i class="swapp-star"></i> Add to Favorites</a>
+		{{^favorited}}<a href="#" class="button no-bottom button--full button--icon" id="button--star"><i class="swapp-star"></i> Add to Favorites</a>{{/favorited}}
+		{{#favorited}}<div class="alert no-bottom">This item is a favorite of yours</div>{{/favorited}}
 		<a href="/items/{{id}}/swap" class="button no-top button--full button--icon button--swapp"><i class="swapp-logo"></i> Propose a Swapp</a>
 		{{/is_mine}}
 		{{/user_id}}
