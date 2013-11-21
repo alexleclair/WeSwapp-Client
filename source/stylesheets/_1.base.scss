@@ -159,6 +159,11 @@ a {
 	transform: $transform;
 	-ms-transform: $transform;
 	-webkit-transform: $transform;
+
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
 @mixin transition($transition...) {
