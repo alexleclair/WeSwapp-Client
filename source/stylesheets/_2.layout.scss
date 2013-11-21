@@ -1,7 +1,7 @@
 
 
 *, *:before, *:after {
-	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	-moz-box-sizing: border-box !important; -webkit-box-sizing: border-box !important; box-sizing: border-box !important;
 }
 
 
@@ -13,7 +13,7 @@
 body {
 	max-width: 60em;
 	min-width: 20em;
-	padding: 8em 0 6em 3.5em;
+	padding: 12em 0 6em 3.5em;
 	margin: 0 auto;
 }
 
@@ -119,6 +119,18 @@ img {
 
 		padding: 4.5em 0 0;
 	}
+
+
+.search {
+	position: fixed;
+
+	top: 4.5em;
+	left: 0;
+
+	width: 100%;
+
+	z-index: 3;
+}
 
 
 

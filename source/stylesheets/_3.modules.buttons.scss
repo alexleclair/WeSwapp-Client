@@ -120,7 +120,7 @@
 		color: white;
 		font-family: $header_font;
 		font-size: 0.4em;
-		line-height: 1.2em;
+		line-height: 1.5em;
 
 
 		width: 1.5em;
@@ -144,8 +144,16 @@
 		}
 	}
 
+	.app__header__btn--search {
+
+		&.app__header__btn--active {
+			color: $darkgray--dark;
+			background: white;
+		}
+	}
+
 	.app__header__btn--active {
-		color: white !important;
+		color: white;
 
 		background: $mint;
 

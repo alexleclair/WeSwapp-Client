@@ -5,6 +5,7 @@
 @import "_3.modules.menu";
 @import "_3.modules.profile";
 @import "_3.modules.proposals";
+@import "_3.modules.tags";
 
 
 
@@ -199,6 +200,8 @@
 		}
 
 	.item__title {
+		color: $grass--dark;
+		text-transform: none;
 		text-align: center;
 
 
@@ -217,7 +220,7 @@
 
 	z-index: -1;
 
-	height: 10em;
+	height: 14em;
 	width: 100%;
 
 	opacity: 0.8;
@@ -279,8 +282,6 @@
 	.item__header__h1,
 	.item__header__h2,
 	.item__bar__h1 {
-		color: $darkgray--dark;
-		text-transform: uppercase;
 		line-height: 1.1em;
 	}
 

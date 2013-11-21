@@ -32,7 +32,6 @@ window.App =
 
 
 
-
 		@menu_view = new App.Views.Menu
 			model: @swapper
 
@@ -40,6 +39,11 @@ window.App =
 
 		@notifications_view = new App.Views.Notifications
 			model: @swapper
+
+
+		@tags_view = new App.Views.Tags()
+		@tags_view.render()
+
 
 		
 		@router = new App.Routers.Router()

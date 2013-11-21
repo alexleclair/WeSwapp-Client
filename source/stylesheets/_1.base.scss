@@ -4,8 +4,11 @@
 
 
 /* Colors */
+$white--transparent: transparentize(white, 0.05);
+
 $lightgray: #f5f7fa;
 $lightgray--dark: #e6e9ed;
+$lightgray--transparent: transparentize(#f5f7fa, 0.05);
 
 $mediumgray: #ccd1d9;
 $mediumgray--dark: #aab2bd;
@@ -20,6 +23,9 @@ $bittersweet--darker: darken(#e9573f, 20%);
 $aqua: #4fc1e9;
 $aqua--dark: #3bafda;
 $aqua--darker: darken(#3bafda, 5%);
+
+$bluejeans: #5d9cec;
+$bluejeans--dark: #4a89dc;
 
 $grass: #a0d468;
 $grass--dark: #8cc152;
@@ -36,9 +42,12 @@ $grapefruit: #ed5565;
 $grapefruit--dark: #da4453;
 $grapefruit--darker: darken(#da4453, 5%);
 
+$lavender: #ac92ec;
+$lavender--dark: #967adc;
+
 
 /* Fonts */
-$header_font: "Raleway", sans-serif;
+$header_font: "Lato", sans-serif;
 $body_font: sans-serif;
 
 
@@ -53,12 +62,14 @@ $body_font: sans-serif;
 html {
 	font: 1em/1.6 $header_font;
 	color: $darkgray;
+	font-weight: 300;
 }
 
 
 h1, h2, h3, h4, h5, h6, input {
 	font-family: $header_font;
-	color: $grass--dark;
+	color: $darkgray--dark;
+	text-transform: uppercase;
 }
 	
 	.thin {
