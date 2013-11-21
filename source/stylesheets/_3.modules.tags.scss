@@ -12,7 +12,7 @@ $tag_colors:	$grapefruit--dark, $bluejeans--dark, $grass--dark, $lavender--dark,
 	overflow: hidden;
 
 
-	@include translate(0, -12.25em);
+	@include translate(0, -77%);
 	@include transition(all 0.3s);
 
 
@@ -22,7 +22,7 @@ $tag_colors:	$grapefruit--dark, $bluejeans--dark, $grass--dark, $lavender--dark,
 
 		background: $white--transparent;
 
-		padding: 2em 1em;
+		// padding: 2em 1em;
 	}
 }
 
