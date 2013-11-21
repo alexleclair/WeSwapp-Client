@@ -64,7 +64,7 @@
 			}
 
 
-			@for $i from 0 through 6 {
+			@for $i from 0 through 10 {
 				&:nth-child(#{$i}) {
 					background: darken($aqua, 3% * $i);
 				}
