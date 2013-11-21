@@ -1,0 +1,88 @@
+
+
+$tag_colors:	$grapefruit--dark, $bluejeans--dark, $grass--dark, $lavender--dark, $darkgray--dark, $sunflower--dark, $bittersweet--dark;
+
+
+
+
+.search {
+	padding: 1em;
+	background: $lightgray--transparent;
+
+	overflow: hidden;
+
+
+	@include translate(0, -12.25em);
+	@include transition(all 0.3s);
+
+
+	&.search--opened {
+		@include translate(0, 0);
+
+
+		background: $white--transparent;
+
+		padding: 2em 1em;
+	}
+}
+
+	.search__h1 {
+		font-size: 3em;
+		text-align: center;
+
+		margin-bottom: 0.5em;
+	}
+
+
+
+.tags {
+	color: $lightgray--dark;
+	text-align: center;
+
+	padding: 0 10%;
+}
+
+	.tags--hashtags {
+		margin-bottom: 1em;
+	}
+
+
+	.tag {
+		font-size: 1.15em;
+
+		background: none;
+		border: none;
+
+		outline: none;
+
+
+		$i: 1;
+		@each $tag_color in $tag_colors {
+			&:nth-child(#{$i}n) {
+				color: #{$tag_color};
+			}
+			$i: $i + 1;
+		}
+
+
+
+		&:after {
+			content: "/";
+			color: $lightgray--dark;
+
+			margin: 0 0 0 0.8em;
+		}
+
+		&:last-child:after {
+			content: "";
+		}
+		
+
+		.tags--hashtags & {
+
+			&:before {
+				content: "#";
+				color: $lightgray--dark;
+			}
+		}
+	}
