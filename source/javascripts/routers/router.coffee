@@ -35,6 +35,9 @@ class App.Routers.Router extends Backbone.Router
 		App.notifications_view.hide_menu()
 
 
+		window.scrollTo 0, 0
+
+
 
 	
 	home: ->
