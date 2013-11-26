@@ -55,6 +55,21 @@ window.App =
 
 $ ->
 
+
+	$(window).on 'scroll', ->
+		clearTimeout(timer)
+
+		if !document.body.classList.contains('disable-hover')
+			document.body.classList.add('disable-hover')
+
+		timer = setTimeout ->
+			document.body.classList.remove('disable-hover')
+		, 500
+	, false
+
+
+
+
 	if $('body').hasClass 'landing'
 		$('.slides').cycle({
 			speed: 800,
